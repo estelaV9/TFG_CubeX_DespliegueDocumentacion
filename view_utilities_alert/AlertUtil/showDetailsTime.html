@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the showDetailsTime method from the AlertUtil class, for the Dart programming language.">
+  <title>showDetailsTime method - AlertUtil class - alert library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../view_utilities_alert/view_utilities_alert-library.html">view\utilities\alert.dart</a></li>
+    <li><a href="../../view_utilities_alert/AlertUtil-class.html">AlertUtil</a></li>
+    <li class="self-crumb">showDetailsTime static method</li>
+  </ol>
+  <div class="self-name">showDetailsTime</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="view_utilities_alert&#47;AlertUtil-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">showDetailsTime</span> static method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype">dynamic</span>
+<span class="name ">showDetailsTime</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="showDetailsTime-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span></li>
+<li><span class="parameter" id="showDetailsTime-param-deleteTime"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span> <span class="parameter-name">deleteTime</span>(), </span></li>
+<li><span class="parameter" id="showDetailsTime-param-timeTraining"><span class="type-annotation"><a href="../../model_time_training/TimeTraining-class.html">TimeTraining</a></span> <span class="parameter-name">timeTraining</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Método para mostrar los detalles de un tiempo seleccionado.</p>
+<p>Parametros:
+<code>context</code>: El contexto de la aplicación para poder mostrar el diálogo.
+<code>deleteTime</code>: Función que se ejecutará si el usuario confirma la eliminación del tiempo.
+<code>timeTraining</code>: Objeto que contiene los detalles del tiempo.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">static showDetailsTime(BuildContext context,
+    Future&lt;void&gt; Function() deleteTime, TimeTraining timeTraining) {
+  var colorPressed = AppColors.purpleButton;
+  var isTextPressed = false;
+  &#47;&#47; SE MUESTRA EL DIALOG
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          &#47;&#47; SE REDUCE EL PADDING DEL TITULO Y DEL CONTENIDO
+          titlePadding:
+              const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+
+          backgroundColor: AppColors.lightVioletColor,
+          &#47;&#47; TITULO DE LA ALERTA
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconClass.iconButton(
+                  context, () {}, &quot;add_penalty&quot;, Icons.block),
+              Text(
+                timeTraining.timeInSeconds.toString(),
+                style: const TextStyle(
+                  color: AppColors.darkPurpleColor,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              IconClass.iconButton(context, () async {
+                await deleteTime();
+              }, &quot;delete_time&quot;, Icons.delete)
+            ],
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min, &#47;&#47; QUE OCUPE EL MINIMO
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconClass.iconButton(
+                      context, () {}, &quot;date&quot;, Icons.calendar_month),
+                  Text(
+                    DateFormat(&#39;dd&#47;MM&#47;yyyy&#39;).format(DateTime.now()),
+                    style: const TextStyle(
+                        color: AppColors.darkPurpleColor, fontSize: 16),
+                  )
+                ],
+              ),
+
+              &#47;&#47; LINEA DIVISORIA ENTRE EL LA FECHA Y EL CONTENIDO EN SI
+              const Divider(
+                height: 10,
+                thickness: 1.3,
+                indent: 10,
+                endIndent: 10,
+                color: AppColors.darkPurpleColor,
+              ),
+
+              const SizedBox(height: 5),
+
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      isTextPressed = !isTextPressed;
+                    },
+                    child: Container(
+                      width: 95,
+                      height: 30,
+                      color: isTextPressed
+                          ? AppColors.purpleButton
+                          : Colors.transparent,
+                      child: Card(
+                        color: isTextPressed
+                            ? AppColors.purpleButton
+                            : Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ), &#47;&#47; RADIO DEL CARD
+                        child: TextButton(
+                          onPressed: () {},
+                          child: const Text(
+                            &quot;Scramble&quot;,
+                            style: TextStyle(
+                                color: AppColors.darkPurpleColor,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 100,
+                    height: 30,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ), &#47;&#47; RADIO DEL CARD
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          &quot;Comments&quot;,
+                          style: TextStyle(
+                              color: AppColors.darkPurpleColor,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 190,
+                    child: Text(
+                      timeTraining.scramble,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  ),
+                  IconClass.iconButton(context, () async {
+                    await Clipboard.setData(
+                        ClipboardData(text: timeTraining.scramble));
+                    &#47;&#47; MUESTRA MENSAJE DE QUE SE COPIO CORRECTAMENTE
+                    showSnackBarInformation(context, &quot;copied_successfully&quot;);
+                  }, &quot;copy_scramble&quot;, Icons.copy)
+                ],
+              )
+            ],
+          ),
+        );
+      });
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../view_utilities_alert/view_utilities_alert-library.html">alert</a></li>
+    <li><a href="../../view_utilities_alert/AlertUtil-class.html">AlertUtil</a></li>
+    <li class="self-crumb">showDetailsTime static method</li>
+</ol>
+
+    <h5>AlertUtil class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    esteladevega_tfg_cubex
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

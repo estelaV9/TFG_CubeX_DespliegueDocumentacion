@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the generateScramble method from the Scramble class, for the Dart programming language.">
+  <title>generateScramble method - Scramble class - ScrambleGenerator library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../utilities_ScrambleGenerator/utilities_ScrambleGenerator-library.html">utilities\ScrambleGenerator.dart</a></li>
+    <li><a href="../../utilities_ScrambleGenerator/Scramble-class.html">Scramble</a></li>
+    <li class="self-crumb">generateScramble method</li>
+  </ol>
+  <div class="self-name">generateScramble</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="utilities_ScrambleGenerator&#47;Scramble-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">generateScramble</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+<span class="name ">generateScramble</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="generateScramble-param-random"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">random</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Genera una secuencia aleatoria de movimientos para el cubo Rubik.</p>
+<p>Este método genera una secuencia de movimientos aleatorios (sobretodo para la categoría de 3x3),
+donde cada movimiento está compuesto por una de las caras del cubo (de la lista <code>moves</code>), y se le añade
+aleatoriamente un giro adicional como <code>'</code> o <code>2</code> (con probabilidades de 30% y 30% respectivamente).
+El parámetro <code>random</code> define cuántos movimientos se generarán en la secuencia.</p>
+<p>Se asegura de que no haya movimientos consecutivos repetidos.</p>
+<p><code>random</code> El número de movimientos a generar.</p>
+<p>Retorna la secuencia de movimientos generada como un String, donde los movimientos
+están separados por un espacio.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">String generateScramble(int random) {
+  String lastMove = &quot;&quot;;
+  List&lt;String&gt; scrambleList = [];
+
+  for (int i = 0; i &lt; random; i++) {
+    &#47;&#47; SE COGE UNA CAPA ALEATORIAMENTE
+    String move = moves[Random().nextInt(moves.length)];
+
+    &#47;&#47; SE ASEGURA QUE EL MOVIMIENTO ACTUAL NO SEA IGUAL AL ANTERIOR,
+    &#47;&#47; ASI SE EVITA LAS REPETICIONES CONSECUTIVAS DEL MISMO MOVIMIENTO
+    if (lastMove != &quot;&quot;) {
+      while (move.contains(lastMove)) {
+        move = moves[Random().nextInt(moves.length)];
+      } &#47;&#47; CUANDO LA CAPA SEA IGUAL A LA ANTERIOR CAPA, SE COGE OTRA CAPA ALEATORIAMENTE
+
+      &#47;&#47;AGRGAMOS UN GIRO ADICIONAL OPCIONAL (como U&#39;, F2,.. )
+      int randomMove = Random().nextInt(100);
+      if (randomMove &lt;= 30) {
+        &#47;&#47; SI ES MENOR O IGUAL A 30 SE LE COLOCA &#39;
+        scrambleList.add(&quot;$move&#39;&quot;);
+        &#47;&#47; EN LASTMOVE SOLO SE GUARDA LA CAPA, SIN EL GIRO ADICIONAL
+        lastMove = move;
+      } else if (randomMove &lt;= 60) {
+        &#47;&#47; SI NO ES MENOR O IGUAL A 30 Y ES MENOR O IGUAL A 60 SE LE COLOCA UN 2
+        scrambleList.add(&quot;${move}2&quot;);
+        lastMove = move;
+      } else {
+        &#47;&#47; Y SI NO, SE AGREGA SOLO LA CAPA
+        scrambleList.add(move);
+        lastMove = move;
+      }
+    } else {
+      &#47;&#47; PARA EL PRIMER MOVIMIENTO SOLO SE AGREGA LA CAPA Y SE ESTABLECE LA ULTIMA CAPA
+      scrambleList.add(move);
+      lastMove = move;
+    }
+  }
+  &#47;&#47; SE CONVIERTE LA LISTA EN UNA CADENA CON ESPACIOS
+  String scramble = scrambleList.join(&quot; &quot;);
+  return scramble;
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../utilities_ScrambleGenerator/utilities_ScrambleGenerator-library.html">ScrambleGenerator</a></li>
+    <li><a href="../../utilities_ScrambleGenerator/Scramble-class.html">Scramble</a></li>
+    <li class="self-crumb">generateScramble method</li>
+</ol>
+
+    <h5>Scramble class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    esteladevega_tfg_cubex
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
