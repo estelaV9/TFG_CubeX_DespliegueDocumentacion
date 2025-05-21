@@ -58,7 +58,7 @@
     <section class="multi-line-signature">
       
 <span class="returntype">void</span>
-<span class="name ">setSession</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="setSession-param-newSessionName"><span class="type-annotation"><a href="../../model_session/Session-class.html">Session</a></span> <span class="parameter-name">newSessionName</span></span></li>
+<span class="name ">setSession</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="setSession-param-newSessionName"><span class="type-annotation"><a href="../../model_session/SessionClass-class.html">SessionClass</a></span> <span class="parameter-name">newSessionName</span></span></li>
 </ol>)
 
       
@@ -73,7 +73,7 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void setSession(Session newSessionName) {
+  <pre class="language-dart"><code class="language-dart">void setSession(SessionClass newSessionName) {
   _session = newSessionName;
   &#47;&#47; SE NOTIFICA A TODOS LOS LISTENERS CUANDO EL NOMBRE DE LA SESION CAMBIE
   notifyListeners();

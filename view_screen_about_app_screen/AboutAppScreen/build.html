@@ -119,19 +119,7 @@ Widget build(BuildContext context) {
       backgroundColor: AppColors.lightVioletColor,
     ),
     body: Container(
-      decoration: const BoxDecoration(
-        &#47;&#47; COLOR DEGRADADO PARA EL FONDO
-        gradient: LinearGradient(
-          begin: Alignment.topCenter, &#47;&#47; DESDE ARRIBA
-          end: Alignment.bottomCenter, &#47;&#47; HASTA ABAJO
-          colors: [
-            &#47;&#47; COLOR DE ARRIBA DEL DEGRADADO
-            AppColors.upLinearColor,
-            &#47;&#47; COLOR DE ABAJO DEL DEGRADADO
-            AppColors.downLinearColor,
-          ],
-        ),
-      ),
+      decoration: AppStyles.boxDecorationContainer(),
       child: SingleChildScrollView(
         &#47;&#47; SCROLL
         child: Padding(
@@ -149,12 +137,10 @@ Widget build(BuildContext context) {
                       padding: const EdgeInsets.only(right: 10),
                       &#47;&#47; CubeX
                       child: Internationalization.internationalization
-                          .createLocalizedSemantics(
+                          .localizedTextOnlyKey(
                         context,
                         &quot;cube_x&quot;,
-                        &quot;cube_x&quot;,
-                        &quot;cube_x&quot;,
-                        const TextStyle(
+                        style: const TextStyle(
                           fontFamily: &#39;JollyLodger&#39;,
                           fontSize: 100,
                           color: AppColors.purpleIntroColor,
@@ -189,24 +175,19 @@ Widget build(BuildContext context) {
               Align(
                 alignment: Alignment.center,
                 child: Internationalization.internationalization
-                    .createLocalizedSemantics(
+                    .localizedTextOnlyKey(
                   context,
                   &quot;version&quot;,
-                  &quot;version&quot;,
-                  &quot;version&quot;,
-                  const TextStyle(fontSize: 18, color: Colors.grey),
+                  style: const TextStyle(fontSize: 18, color: Colors.grey),
                 ),
               ),
               const SizedBox(height: 20),
 
               &#47;&#47; DESCRIPCION
-              Internationalization.internationalization
-                  .createLocalizedSemantics(
+              Internationalization.internationalization.localizedTextOnlyKey(
                 context,
                 &quot;description&quot;,
-                &quot;description&quot;,
-                &quot;description&quot;,
-                const TextStyle(fontSize: 16, color: Colors.black87),
+                style: const TextStyle(fontSize: 16, color: Colors.black87),
               ),
 
               const SizedBox(height: 20),
@@ -222,12 +203,10 @@ Widget build(BuildContext context) {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Internationalization.internationalization
-                        .createLocalizedSemantics(
+                        .localizedTextOnlyKey(
                       context,
                       &quot;open_source&quot;,
-                      &quot;open_source&quot;,
-                      &quot;open_source&quot;,
-                      const TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),
@@ -264,35 +243,29 @@ Widget build(BuildContext context) {
                 child: Column(
                   children: [
                     Internationalization.internationalization
-                        .createLocalizedSemantics(
+                        .localizedTextOnlyKey(
                       context,
                       &quot;developer&quot;,
-                      &quot;developer&quot;,
-                      &quot;developer&quot;,
-                      const TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
                     ),
                     const SizedBox(height: 10),
                     Internationalization.internationalization
-                        .createLocalizedSemantics(
+                        .localizedTextOnlyKey(
                       context,
                       &quot;developer_name&quot;,
-                      &quot;developer_name&quot;,
-                      &quot;developer_name&quot;,
-                      const TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
                     const SizedBox(height: 5),
                     Internationalization.internationalization
-                        .createLocalizedSemantics(
+                        .localizedTextOnlyKey(
                       context,
                       &quot;developer_email&quot;,
-                      &quot;developer_email&quot;,
-                      &quot;developer_email&quot;,
-                      const TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                       ),
                     )
@@ -314,24 +287,20 @@ Widget build(BuildContext context) {
                 child: Column(
                   children: [
                     Internationalization.internationalization
-                        .createLocalizedSemantics(
+                        .localizedTextOnlyKey(
                       context,
                       &quot;tools&quot;,
-                      &quot;tools&quot;,
-                      &quot;tools&quot;,
-                      const TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
                     ),
                     const SizedBox(height: 10),
                     Internationalization.internationalization
-                        .createLocalizedSemantics(
+                        .localizedTextOnlyKey(
                       context,
                       &quot;tools_list&quot;,
-                      &quot;tools_list&quot;,
-                      &quot;tools_list&quot;,
-                      const TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),
@@ -359,17 +328,8 @@ Widget build(BuildContext context) {
                         } &#47;&#47; VERIFICA SI LA URL ES VALIDA
                       },
                       child: Internationalization.internationalization
-                          .createLocalizedSemantics(
-                        context,
-                        &quot;name_github&quot;,
-                        &quot;name_github&quot;,
-                        &quot;name_github&quot;,
-                        const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.darkPurpleColor,
-                          fontSize: 30,
-                        ),
-                      ))
+                          .localizedTextOnlyKey(context, &quot;name_github&quot;,
+                              style: AppStyles.darkPurpleAndBold(30)))
                 ],
               )
             ],

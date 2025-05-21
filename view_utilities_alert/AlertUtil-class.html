@@ -164,12 +164,54 @@ en la aplicación, con soporte para internacionalización.</p>
     </dl>
   </section>
     
+  <section class="summary offset-anchor" id="static-properties">
+    <h2>Static Properties</h2>
+    <dl class="properties">
+        <dt id="iconPenalty" class="property">
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/iconPenalty.html">iconPenalty</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/widgets/IconData-class.html">IconData</a></span>
+  
+
+</dt>
+<dd>
+  Icono para las penalizaciones
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="timeTrainingDaoSb" class="property">
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/timeTrainingDaoSb.html">timeTrainingDaoSb</a></span>
+  <span class="signature">&#8594; <a href="../data_dao_supebase_time_training_dao_sb/TimeTrainingDaoSb-class.html">TimeTrainingDaoSb</a></span>
+  
+
+</dt>
+<dd>
+  Objeto para el dao de los tiempos de resolucion
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+    </dl>
+  </section>
     
   <section class="summary offset-anchor" id="static-methods">
     <h2>Static Methods</h2>
     <dl class="callables">
+        <dt id="addSecondsTimeOfInspectionForm" class="callable">
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/addSecondsTimeOfInspectionForm.html">addSecondsTimeOfInspectionForm</a></span><span class="signature">(<wbr><span class="parameter" id="addSecondsTimeOfInspectionForm-param-titleKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">titleKey</span>, </span><span class="parameter" id="addSecondsTimeOfInspectionForm-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Metodo para mostrar un diálogo que permita que el usuario introduzca el tiempo de inspección deseado.
+  
+
+</dd>
+
         <dt id="showAlert" class="callable">
-  <span class="name"><a href="../view_utilities_alert/AlertUtil/showAlert.html">showAlert</a></span><span class="signature">(<wbr><span class="parameter" id="showAlert-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">key</span>, </span><span class="parameter" id="showAlert-param-contentKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">contentKey</span>, </span><span class="parameter" id="showAlert-param-title"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">title</span>, </span><span class="parameter" id="showAlert-param-content"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">content</span>, </span><span class="parameter" id="showAlert-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span>)
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/showAlert.html">showAlert</a></span><span class="signature">(<wbr><span class="parameter" id="showAlert-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">key</span>, </span><span class="parameter" id="showAlert-param-contentKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">contentKey</span>, </span><span class="parameter" id="showAlert-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -207,8 +249,22 @@ en la aplicación, con soporte para internacionalización.</p>
 
 </dd>
 
+        <dt id="showAlertSimple" class="callable">
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/showAlertSimple.html">showAlertSimple</a></span><span class="signature">(<wbr><span class="parameter" id="showAlertSimple-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span><span class="parameter" id="showAlertSimple-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">key</span>, </span><span class="parameter" id="showAlertSimple-param-contentKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">contentKey</span>, </span><span class="parameter" id="showAlertSimple-param-functionKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">functionKey</span>, </span><span class="parameter" id="showAlertSimple-param-function"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Function-class.html">Function</a></span> <span class="parameter-name">function</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para mostrar un diálogo de alerta simple con un botón personalizado
+y uno de cancelación.
+  
+
+</dd>
+
         <dt id="showChangeLanguague" class="callable">
-  <span class="name"><a href="../view_utilities_alert/AlertUtil/showChangeLanguague.html">showChangeLanguague</a></span><span class="signature">(<wbr><span class="parameter" id="showChangeLanguague-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span><span class="parameter" id="showChangeLanguague-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">key</span></span>)
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/showChangeLanguague.html">showChangeLanguague</a></span><span class="signature">(<wbr><span class="parameter" id="showChangeLanguague-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span>)
     <span class="returntype parameter">&#8594; dynamic</span>
   </span>
   
@@ -216,6 +272,32 @@ en la aplicación, con soporte para internacionalización.</p>
 </dt>
 <dd>
   Método para mostrar un cuadro de diálogo para cambiar el idioma de la aplicación.
+  
+
+</dd>
+
+        <dt id="showCommentsTime" class="callable">
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/showCommentsTime.html">showCommentsTime</a></span><span class="signature">(<wbr><span class="parameter" id="showCommentsTime-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span><span class="parameter" id="showCommentsTime-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">key</span>, </span><span class="parameter" id="showCommentsTime-param-addComment"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span> <span class="parameter-name">addComment</span>(<span class="parameter" id="param-comment"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">comment</span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para mostrar un diálogo para agregar o editar un comentario asociado a un tiempo registrado.
+  
+
+</dd>
+
+        <dt id="showConfirmWithOldPass" class="callable">
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/showConfirmWithOldPass.html">showConfirmWithOldPass</a></span><span class="signature">(<wbr><span class="parameter" id="showConfirmWithOldPass-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span><span class="parameter" id="showConfirmWithOldPass-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">key</span>, </span><span class="parameter" id="showConfirmWithOldPass-param-oldPass"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">oldPass</span>, </span><span class="parameter" id="showConfirmWithOldPass-param-currentUser"><span class="type-annotation"><a href="../model_user/UserClass-class.html">UserClass</a></span> <span class="parameter-name">currentUser</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para mostrar una alerta de confirmación con la contraseña antigua.
   
 
 </dd>
@@ -243,6 +325,32 @@ eliminación de una sesión o cubo.
 </dt>
 <dd>
   Método para mostrar los detalles de un tiempo seleccionado.
+  
+
+</dd>
+
+        <dt id="showExitAlert" class="callable">
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/showExitAlert.html">showExitAlert</a></span><span class="signature">(<wbr><span class="parameter" id="showExitAlert-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para mostrar una alerta de confirmación para salir de la aplicación.
+  
+
+</dd>
+
+        <dt id="showExitConfirmationDialog" class="callable">
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/showExitConfirmationDialog.html">showExitConfirmationDialog</a></span><span class="signature">(<wbr><span class="parameter" id="showExitConfirmationDialog-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span><span class="parameter" id="showExitConfirmationDialog-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">key</span>, </span><span class="parameter" id="showExitConfirmationDialog-param-contentKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">contentKey</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para mostrar una alerta cuando el usuario intente salir del perfil sin guardar los cambios.
   
 
 </dd>
@@ -282,6 +390,19 @@ eliminación de una sesión o cubo.
 </dt>
 <dd>
   Método para mostrar un Snackbar con información.
+  
+
+</dd>
+
+        <dt id="showSnackBarWithDuration" class="callable">
+  <span class="name"><a href="../view_utilities_alert/AlertUtil/showSnackBarWithDuration.html">showSnackBarWithDuration</a></span><span class="signature">(<wbr><span class="parameter" id="showSnackBarWithDuration-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span><span class="parameter" id="showSnackBarWithDuration-param-seconds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">seconds</span>, </span><span class="parameter" id="showSnackBarWithDuration-param-keyTitle"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">keyTitle</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Metodo para mostrar un SnackBar personalizado con una duracion determinada.
   
 
 </dd>

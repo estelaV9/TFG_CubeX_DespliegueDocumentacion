@@ -142,6 +142,19 @@ las consultas y operaciones necesarias sobre la base de datos.</p>
 
 </dd>
 
+        <dt id="getImageUser" class="callable">
+  <span class="name"><a href="../data_dao_user_dao/UserDao/getImageUser.html">getImageUser</a></span><span class="signature">(<wbr><span class="parameter" id="getImageUser-param-idUser"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idUser</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método que conseguir la imagen de un usuario de la base de datos basado en su ID.
+  
+
+</dd>
+
         <dt id="getMailUserFromName" class="callable">
   <span class="name"><a href="../data_dao_user_dao/UserDao/getMailUserFromName.html">getMailUserFromName</a></span><span class="signature">(<wbr><span class="parameter" id="getMailUserFromName-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
@@ -155,8 +168,21 @@ las consultas y operaciones necesarias sobre la base de datos.</p>
 
 </dd>
 
+        <dt id="getUserId" class="callable">
+  <span class="name"><a href="../data_dao_user_dao/UserDao/getUserId.html">getUserId</a></span><span class="signature">(<wbr><span class="parameter" id="getUserId-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para obtener el ID del usuario actual a partir del nombre de usuario guardado en el estado global.
+  
+
+</dd>
+
         <dt id="insertUser" class="callable">
-  <span class="name"><a href="../data_dao_user_dao/UserDao/insertUser.html">insertUser</a></span><span class="signature">(<wbr><span class="parameter" id="insertUser-param-user"><span class="type-annotation"><a href="../model_user/User-class.html">User</a></span> <span class="parameter-name">user</span></span>)
+  <span class="name"><a href="../data_dao_user_dao/UserDao/insertUser.html">insertUser</a></span><span class="signature">(<wbr><span class="parameter" id="insertUser-param-user"><span class="type-annotation"><a href="../model_user/UserClass-class.html">UserClass</a></span> <span class="parameter-name">user</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
   </span>
   
@@ -219,6 +245,19 @@ ya existe en la base de datos.
 <dd class="inherited">
   A string representation of this object.
   <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="updateUserInfo" class="callable">
+  <span class="name"><a href="../data_dao_user_dao/UserDao/updateUserInfo.html">updateUserInfo</a></span><span class="signature">(<wbr><span class="parameter" id="updateUserInfo-param-user"><span class="type-annotation"><a href="../model_user/UserClass-class.html">UserClass</a></span> <span class="parameter-name">user</span>, </span><span class="parameter" id="updateUserInfo-param-idUser"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idUser</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método que actualizar la información de un usuario de la base de datos basado en su ID.
+  
 
 </dd>
 

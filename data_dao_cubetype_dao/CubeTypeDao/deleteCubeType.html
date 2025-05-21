@@ -58,7 +58,8 @@
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
-<span class="name ">deleteCubeType</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="deleteCubeType-param-cubeName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cubeName</span></span></li>
+<span class="name ">deleteCubeType</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="deleteCubeType-param-cubeName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">cubeName</span>, </span></li>
+<li><span class="parameter" id="deleteCubeType-param-idUser"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">idUser</span></span></li>
 </ol>)
 
       
@@ -71,6 +72,7 @@
 <p>Parámetros:</p>
 <ul>
 <li><code>cubeName</code>: Nombre del tipo de cubo que se quiere eliminar.</li>
+<li><code>idUser</code>: ID del usuario.</li>
 </ul>
 <p>Retorna:</p>
 <ul>
@@ -82,12 +84,12 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; deleteCubeType(String cubeName) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; deleteCubeType(String cubeName, int? idUser) async {
   final db = await DatabaseHelper.database;
   try {
     &#47;&#47; SE ELIMINA EL TIPO DE CUBO CON EL NOMBRE PROPORCIONADO
     final deleteCube = await db
-        .delete(&#39;cubeType&#39;, where: &#39;cubeName = ?&#39;, whereArgs: [cubeName]);
+        .delete(&#39;cubeType&#39;, where: &#39;cubeName = ? AND idUser = ?&#39;, whereArgs: [cubeName, idUser]);
 
     &#47;&#47; DEVUELVE TRUE&#47;FALSE SI SE ELIMINO CORRECTAMENTE O NO
     return deleteCube &gt; 0;

@@ -58,8 +58,9 @@
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>
-<span class="name ">validateUsername</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="validateUsername-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">value</span></span></li>
-</ol>)
+<span class="name ">validateUsername</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="validateUsername-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">value</span>, [</span></li>
+<li><span class="parameter" id="validateUsername-param-isProfile"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isProfile</span> = <span class="default-value">false</span></span></li>
+</ol>])
 
       
 
@@ -69,22 +70,28 @@
   <p>Validar un nombre de usuario.</p>
 <ul>
 <li><code>value</code>: El nombre de usuario ingresado por el usuario.</li>
+<li><code>isProfile</code> (opcional, <code>false</code> por defecto): Indica si la validación
+es para el formulario del perfil. Si es <code>true</code>, el campo puede ser nulo.</li>
 </ul>
-<p>Verifica que el campo no esté vacío y que no exceda los 12 caracteres.</p>
-<p>Retorna un mensaje de error si la validación falla o <code>null</code> si es exitosa.</p>
+<h3 id="reglas-de-validacin">Reglas de validación:</h3>
+<ul>
+<li>No estar vacío (excepto en el formulario de perfil).</li>
+<li>No exceder los 12 caracteres.</li>
+</ul>
+<p>Retorna la key del mensaje de error si la validación falla o <code>null</code> si es exitosa.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static String? validateUsername(String? value) {
-  if (value == null || value.isEmpty) {
-    return &#39;Please fill in this field.&#39;;
-  } &#47;&#47; VALIDAR CAMPOS VACIOS
+  <pre class="language-dart"><code class="language-dart">static String? validateUsername(String? value, [bool isProfile = false]) {
+  if (!isProfile &amp;&amp; (value == null || value.isEmpty)) {
+    return &#39;form_error_required_field&#39;;
+  } &#47;&#47; VALIDAR CAMPOS VACIOS SI NO ES DEL CAMPO DEL PROFILE
 
-  if (value.length &gt; 12) {
-    return &quot;Name mustn&#39;t exceed 12 characters.&quot;;
+  if (value!.length &gt; 12) {
+    return &quot;form_error_name_max_length&quot;;
   } &#47;&#47; SE VALIDA QUE LOS CARACTERES QUE COMPONEN EL NOMRBE DEL USUARIO NO
   &#47;&#47; SEA MAYOR DE 12 CARACTERES
 

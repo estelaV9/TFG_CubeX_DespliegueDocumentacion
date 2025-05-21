@@ -103,10 +103,16 @@ method, as in <code>super.initState()</code>.</p>
   <pre class="language-dart"><code class="language-dart">@override
 void initState() {
   super.initState();
-  scrambleName = scramble.generateScramble(random);
-  &#47;&#47; ESTABLECEMOS EL SCRAMBLE ACTUAL
-  final currentScramble = Provider.of&lt;CurrentScramble&gt;(this.context, listen: false);
-  currentScramble.setScramble(scrambleName);
+  &#47;&#47; EJECUTA LA FUNCION DESPUES DE QUE EL FRAME ACTUAL TERMINE DE CONSTRUIRSE,
+  &#47;&#47; ASI NO CAUSA ERRORES DURANTE EL BUILD PARA HACER CAMBIOS EN EL STATE O EN PROVIDERS
+  &#47;&#47; (se soluciona el mensaje de error cuando pulsas en el timer de setState() or
+  &#47;&#47; markNeedsBuild() called during build)
+  WidgetsBinding.instance.addPostFrameCallback((_) async {
+    &#47;&#47; ESTABLECEMOS EL SCRAMBLE ACTUAL
+    scrambleName = await _generator();
+    final currentScramble = Provider.of&lt;CurrentScramble&gt;(context, listen: false);
+    currentScramble.setScramble(scrambleName);
+  });
 }</code></pre>
 </section>
 

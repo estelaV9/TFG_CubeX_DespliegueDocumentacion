@@ -131,7 +131,7 @@ para realizar las consultas y operaciones necesarias sobre la base de datos.</p>
 
         <dt id="getSessionByUserAndName" class="callable">
   <span class="name"><a href="../data_dao_session_dao/SessionDao/getSessionByUserAndName.html">getSessionByUserAndName</a></span><span class="signature">(<wbr><span class="parameter" id="getSessionByUserAndName-param-idUser"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idUser</span>, </span><span class="parameter" id="getSessionByUserAndName-param-sessionName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionName</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/Session-class.html">Session</a>?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/SessionClass-class.html">SessionClass</a>?</span>&gt;</span></span>
   </span>
   
 
@@ -144,7 +144,7 @@ para realizar las consultas y operaciones necesarias sobre la base de datos.</p>
 
         <dt id="getSessionByUserCubeName" class="callable">
   <span class="name"><a href="../data_dao_session_dao/SessionDao/getSessionByUserCubeName.html">getSessionByUserCubeName</a></span><span class="signature">(<wbr><span class="parameter" id="getSessionByUserCubeName-param-idUser"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idUser</span>, </span><span class="parameter" id="getSessionByUserCubeName-param-sessionName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">sessionName</span>, </span><span class="parameter" id="getSessionByUserCubeName-param-idCubeType"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">idCubeType</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/Session-class.html">Session</a>?</span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/SessionClass-class.html">SessionClass</a>?</span>&gt;</span></span>
   </span>
   
 
@@ -155,9 +155,22 @@ para realizar las consultas y operaciones necesarias sobre la base de datos.</p>
 
 </dd>
 
+        <dt id="getSessionData" class="callable">
+  <span class="name"><a href="../data_dao_session_dao/SessionDao/getSessionData.html">getSessionData</a></span><span class="signature">(<wbr><span class="parameter" id="getSessionData-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span><span class="parameter" id="getSessionData-param-idUser"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idUser</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/SessionClass-class.html">SessionClass</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para obtener la sesión actual del usuario según el nombre de la sesión y el tipo de cubo actual.
+  
+
+</dd>
+
         <dt id="getSessionOfUser" class="callable">
   <span class="name"><a href="../data_dao_session_dao/SessionDao/getSessionOfUser.html">getSessionOfUser</a></span><span class="signature">(<wbr><span class="parameter" id="getSessionOfUser-param-idName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idName</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/Session-class.html">Session</a></span>&gt;</span></span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/SessionClass-class.html">SessionClass</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
@@ -169,7 +182,7 @@ para realizar las consultas y operaciones necesarias sobre la base de datos.</p>
 </dd>
 
         <dt id="insertSession" class="callable">
-  <span class="name"><a href="../data_dao_session_dao/SessionDao/insertSession.html">insertSession</a></span><span class="signature">(<wbr><span class="parameter" id="insertSession-param-session"><span class="type-annotation"><a href="../model_session/Session-class.html">Session</a></span> <span class="parameter-name">session</span></span>)
+  <span class="name"><a href="../data_dao_session_dao/SessionDao/insertSession.html">insertSession</a></span><span class="signature">(<wbr><span class="parameter" id="insertSession-param-session"><span class="type-annotation"><a href="../model_session/SessionClass-class.html">SessionClass</a></span> <span class="parameter-name">session</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
   </span>
   
@@ -222,7 +235,7 @@ para realizar las consultas y operaciones necesarias sobre la base de datos.</p>
 
         <dt id="searchSessionByCubeAndUser" class="callable">
   <span class="name"><a href="../data_dao_session_dao/SessionDao/searchSessionByCubeAndUser.html">searchSessionByCubeAndUser</a></span><span class="signature">(<wbr><span class="parameter" id="searchSessionByCubeAndUser-param-idUser"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idUser</span>, </span><span class="parameter" id="searchSessionByCubeAndUser-param-idCubeType"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idCubeType</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/Session-class.html">Session</a></span>&gt;</span></span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/SessionClass-class.html">SessionClass</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
@@ -235,7 +248,7 @@ para realizar las consultas y operaciones necesarias sobre la base de datos.</p>
 
         <dt id="sessionList" class="callable">
   <span class="name"><a href="../data_dao_session_dao/SessionDao/sessionList.html">sessionList</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/Session-class.html">Session</a></span>&gt;</span></span>&gt;</span></span>
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_session/SessionClass-class.html">SessionClass</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 

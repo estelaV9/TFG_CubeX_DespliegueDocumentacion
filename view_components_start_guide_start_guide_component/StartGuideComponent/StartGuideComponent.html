@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the StartGuideComponent constructor from Class StartGuideComponent from the start_guide_component library, for the Dart programming language.">
+  <title>StartGuideComponent constructor - StartGuideComponent - start_guide_component library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../view_components_start_guide_start_guide_component/view_components_start_guide_start_guide_component-library.html">view\components\start_guide\start_guide_component.dart</a></li>
+    <li><a href="../../view_components_start_guide_start_guide_component/StartGuideComponent-class.html">StartGuideComponent</a></li>
+    <li class="self-crumb">StartGuideComponent constructor</li>
+  </ol>
+  <div class="self-name">StartGuideComponent</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="view_components_start_guide_start_guide_component&#47;StartGuideComponent-class-sidebar.html"
+      data-below-sidebar="">
+      <div>
+<h1><span class="kind-constructor">StartGuideComponent</span> constructor 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+      <span class="name ">StartGuideComponent</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span></li>
+</ol>)
+    </section>
+    
+<section class="desc markdown">
+  <p>Constructor que inicializa el tutorial y el idioma en función del estado actual.</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">StartGuideComponent(BuildContext context) {
+  &#47;&#47; SE ESTABLECE EL CONTEXTO
+  _context = context;
+
+  Locale currentLanguage = context.read&lt;CurrentLanguage&gt;().locale;
+  if (currentLanguage.toLanguageTag() == &quot;en&quot;) {
+    isSelectedSpainNotifier.value = false;
+    isSelectedEnglishNotifier.value = true;
+  } else {
+    isSelectedSpainNotifier.value = true;
+    isSelectedEnglishNotifier.value = false;
+  } &#47;&#47; SE ESTABLECE EL IDIOMA
+
+  &#47;&#47; LISTA DE LOS PASOS DE LA GUIA
+  _guideSteps = [
+    &#47;&#47; CADA OBJETO CONTIENE TEXTO, MASCOTA, POSICION DE HIGHLIGHT, NAVEGACION Y SI ES EL FINAL
+    const GuideStep(
+      textKeys: [
+        &quot;tour_intro_hello&quot;,
+        &quot;tour_intro_welcome&quot;,
+        &quot;tour_intro_tour_question&quot;
+      ],
+      mascotAsset: &#39;wave&#39;,
+      highlightPosition: null,
+      navigationIndex: null,
+      isFinalStep: false,
+    ),
+    const GuideStep(
+      textKeys: [&quot;tour_header&quot;],
+      mascotAsset: &#39;curious&#39;,
+      highlightPosition: HighlightPosition(top: 35, right: 15, height: 73),
+      navigationIndex: null,
+      isFinalStep: false,
+      mascotPosition: MascotPosition(top: 200, right: 40),
+    ),
+    const GuideStep(
+      textKeys: [&quot;tour_cubeType&quot;],
+      mascotAsset: &#39;cubeTypes&#39;,
+      highlightPosition:
+          HighlightPosition(top: 48, right: 75, width: 40, height: 40),
+      navigationIndex: null,
+      isFinalStep: false,
+      mascotPosition: MascotPosition(top: 200, right: 40),
+    ),
+    const GuideStep(
+      textKeys: [&quot;tour_session&quot;],
+      mascotAsset: &#39;session&#39;,
+      highlightPosition:
+          HighlightPosition(top: 48, right: 30, width: 40, height: 40),
+      navigationIndex: null,
+      isFinalStep: false,
+      mascotPosition: MascotPosition(top: 200, right: 40),
+    ),
+    const GuideStep(
+      textKeys: [&quot;tour_scramble&quot;],
+      mascotAsset: &#39;scramble&#39;,
+      highlightPosition: HighlightPosition(
+          top: 100, left: 10, right: 10, width: 40, height: 156),
+      navigationIndex: null,
+      isFinalStep: false,
+      mascotPosition: MascotPosition(top: 200, right: 20),
+    ),
+    const GuideStep(
+      textKeys: [&quot;tour_timer&quot;],
+      mascotAsset: &#39;inspection&#39;,
+      highlightPosition: HighlightPosition(
+          top: 260, bottom: 160, left: 10, right: 10, width: 40, height: 40),
+      navigationIndex: null,
+      isFinalStep: false,
+      mascotPosition: MascotPosition(top: 200, right: 40),
+    ),
+    const GuideStep(
+      textKeys: [&quot;tour_quick_stats&quot;],
+      mascotAsset: &#39;statistics&#39;,
+      highlightPosition: HighlightPosition(
+          bottom: 65, left: 10, right: 10, width: 40, height: 90),
+      navigationIndex: null,
+      isFinalStep: false,
+      mascotPosition: MascotPosition(top: 200, right: 20),
+    ),
+    GuideStep(
+      textKeys: [&quot;tour_go_to_history&quot;],
+      mascotAsset: &#39;wave&#39;,
+      highlightPosition: HighlightPosition(
+          bottom: 13,
+          left: _calculateHighlightPosition(_context, 0),
+          width: 40,
+          height: 40),
+      navigationIndex: null,
+      isFinalStep: false,
+    ),
+    const GuideStep(
+      textKeys: [&quot;tour_history&quot;],
+      mascotAsset: &#39;wave&#39;,
+      highlightPosition: null,
+      navigationIndex: 0,
+      isFinalStep: false,
+      mascotPosition: MascotPosition(top: 200, right: 40),
+    ),
+    GuideStep(
+      textKeys: [&quot;tour_go_to_stats&quot;],
+      mascotAsset: &#39;wave&#39;,
+      highlightPosition: HighlightPosition(
+          bottom: 13,
+          right: _calculateHighlightPosition(_context, 2, fromRight: true),
+          width: 40,
+          height: 40),
+      navigationIndex: null,
+      isFinalStep: false,
+    ),
+    const GuideStep(
+      textKeys: [&quot;tour_stats&quot;],
+      mascotAsset: &#39;statistics&#39;,
+      highlightPosition: null,
+      navigationIndex: 2,
+      isFinalStep: false,
+      mascotPosition: MascotPosition(top: 200, right: 40),
+    ),
+    const GuideStep(
+      textKeys: [&quot;tour_end_title&quot;],
+      mascotAsset: &#39;jump&#39;,
+      highlightPosition: null,
+      navigationIndex: 1,
+      isFinalStep: false,
+      mascotPosition: MascotPosition(top: 200, right: 40),
+    ),
+    const GuideStep(
+      textKeys: [&quot;tour_end_message&quot;],
+      mascotAsset: &#39;einstein&#39;,
+      highlightPosition: null,
+      navigationIndex: 1,
+      isFinalStep: true,
+      mascotPosition: MascotPosition(top: 200, right: 40),
+    ),
+  ];
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../view_components_start_guide_start_guide_component/view_components_start_guide_start_guide_component-library.html">start_guide_component</a></li>
+    <li><a href="../../view_components_start_guide_start_guide_component/StartGuideComponent-class.html">StartGuideComponent</a></li>
+    <li class="self-crumb">StartGuideComponent constructor</li>
+</ol>
+
+    <h5>StartGuideComponent class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-left-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    esteladevega_tfg_cubex
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

@@ -58,24 +58,38 @@
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span>&gt;</span></span>
-<span class="name ">getTimesOfSession</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="getTimesOfSession-param-idSession"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">idSession</span></span></li>
-</ol>)
+<span class="name ">getTimesOfSession</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="getTimesOfSession-param-idSession"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">idSession</span>, [</span></li>
+<li><span class="parameter" id="getTimesOfSession-param-comment"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">comment</span>, </span></li>
+<li><span class="parameter" id="getTimesOfSession-param-time"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">time</span>, </span></li>
+<li><span class="parameter" id="getTimesOfSession-param-dateAsc"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">dateAsc</span>, </span></li>
+<li><span class="parameter" id="getTimesOfSession-param-timeAsc"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">timeAsc</span>, </span></li>
+</ol>])
 
       
 
     </section>
     
 <section class="desc markdown">
-  <p>Método para obtener los tiempos de una sesión específica.</p>
+  <p>Método para obtener los tiempos de una sesión específica con opción de búsqueda por comentario o tiempo.</p>
 <p>Este método consulta la base de datos y devuelve una lista de todos los tiempos
-registrados para una sesión específica.</p>
+registrados para una sesión específica. Se puede filtrar la búsqueda por comentarios o por tiempo.
+También se puede ordenar los resultados por fecha o tiempo según los parámetros proporcionados.</p>
 <p>Parámetros:</p>
 <ul>
 <li><code>idSession</code>: ID de la sesión de la que se desean obtener los tiempos.</li>
+<li><code>comment</code> (String?, opcional): Si se proporciona, la búsqueda filtrará los resultados
+que contengan este comentario en el campo <code>comments</code>.</li>
+<li><code>time</code> (String?, opcional): Si se proporciona, la búsqueda filtrará los resultados
+cuyos valores en <code>timeInSeconds</code> comiencen con este valor.</li>
+<li><code>dateAsc</code> (bool?, opcional): Si se proporciona, determina el orden de los resultados por fecha:
+<code>true</code> para ascendente, <code>false</code> para descendente.</li>
+<li><code>timeAsc</code> (bool?, opcional): Si se proporciona, determina el orden de los resultados por tiempo:
+<code>true</code> para ascendente, <code>false</code> para descendente.</li>
 </ul>
 <p>Retorna:</p>
 <ul>
-<li><code>List&lt;TimeTraining&gt;</code>: Lista de objetos <a href="../../model_time_training/TimeTraining-class.html">TimeTraining</a> que contiene los tiempos registrados para esa sesión.</li>
+<li><code>Future&lt;List&lt;TimeTraining&gt;&gt;</code>: Lista de objetos <a href="../../model_time_training/TimeTraining-class.html">TimeTraining</a> con los tiempos registrados
+que cumplen los criterios de búsqueda. Si no se encuentran resultados, devuelve una lista vacía.</li>
 </ul>
 </section>
 
@@ -83,12 +97,45 @@ registrados para una sesión específica.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;TimeTraining&gt;&gt; getTimesOfSession(int? idSession) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;TimeTraining&gt;&gt; getTimesOfSession(int? idSession,
+    [String? comment, String? time, bool? dateAsc, bool? timeAsc]) async {
   final db = await DatabaseHelper.database;
   try {
     &#47;&#47; CONSULTA PARA OBTENER TODOS LOS TIEMPOS DE UNA SESION
-    final result = await db.query(&#39;timeTraining&#39;,
-        where: &#39;idSession = ?&#39;, whereArgs: [idSession]);
+    final List&lt;Map&lt;String, dynamic&gt;&gt; result;
+    String orderBy = &quot;&quot;; &#47;&#47; VARIABLE PARA ALMACENAR ORDEN
+
+    &#47;&#47; DETERMINAR ORDENACION
+    if (dateAsc != null) {
+      orderBy = &quot;registrationDate ${dateAsc ? &#39;ASC&#39; : &#39;DESC&#39;}&quot;;
+    } else if (timeAsc != null) {
+      orderBy = timeAsc ? &quot;timeInSeconds ASC&quot; : &quot;timeInSeconds DESC&quot;;
+    }
+
+    if (comment != null) {
+      &#47;&#47; SI EL USUARIO HA INTRODUCIDO UN COMENTARIO, SE REALIZA LA BUSQUEDA POR COMENTARIOS
+      &#47;&#47; SE USA LIKE CON &#39;%&#39; PARA ENCONTRAR CUALQUIER COINCIDENCIA QUE CONTENGA LA PALABRA
+      result = await db.query(&#39;timeTraining&#39;,
+          where: &#39;idSession = ? AND comments LIKE ?&#39;,
+          whereArgs: [idSession, &#39;%$comment%&#39;],
+          orderBy: orderBy.isNotEmpty ? orderBy : null);
+    } else if (time != null) {
+      &#47;&#47; SI EL USUARIO HA INTRODUCIDO UN TIEMPO, SE BUSCA POR EL TIEMPO
+      &#47;&#47; SE USA LIKE CON &#39;%&#39; AL FINAL PARA ENCONTRAR LOS REGISTROS CUYO TIEMPO
+      &#47;&#47; COMIENCE CON EL VALOR INTRODUCIDO
+      result = await db.query(
+        &#39;timeTraining&#39;,
+        where: &quot;idSession = ? AND timeInSeconds LIKE ?&quot;,
+        whereArgs: [idSession, &#39;$time%&#39;],
+        orderBy: orderBy.isNotEmpty ? orderBy : null,
+      );
+    } else {
+      &#47;&#47; SI NO SE HA INTRODUCIDO NI TIEMPO NI COMENTARIO, SE FILTRA POR LA SESION
+      result = await db.query(&#39;timeTraining&#39;,
+          where: &#39;idSession = ?&#39;,
+          whereArgs: [idSession],
+          orderBy: orderBy.isNotEmpty ? orderBy : null);
+    }
 
     if (result.isNotEmpty) {
       &#47;&#47; MAPEAR LOS RESULTADOS A UNA LISTA DE OBJETOS TimeTraining
@@ -104,8 +151,8 @@ registrados para una sesión específica.</p>
         );
       }).toList();
     } else {
-      DatabaseHelper.logger
-          .w(&quot;No se encontraron tiempos para la sesion con ID: $idSession.&quot;);
+      &#47;&#47;DatabaseHelper.logger
+      &#47;&#47;    .w(&quot;No se encontraron tiempos para la sesion con ID: $idSession.&quot;);
       return []; &#47;&#47; DEVOLVER UNA LISTA VACIA SI NO HAY RESULTADOS
     } &#47;&#47; VERIFICAR SI HAY RESULTADOS
   } catch (e) {

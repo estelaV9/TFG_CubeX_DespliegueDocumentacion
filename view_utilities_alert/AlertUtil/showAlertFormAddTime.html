@@ -90,15 +90,14 @@ que se muestran como etiquetas en los campos de texto para ingresar el scramble 
     BuildContext context) async {
   final TextEditingController controllerScramble = TextEditingController();
   final TextEditingController controllerTime = TextEditingController();
-  final cubeTypeDao = CubeTypeDao();
-  final sessionDao = SessionDao();
-  final userDao = UserDao();
-  final timeTrainingDao = TimeTrainingDao();
+  final cubeTypeDaoSb = CubeTypeDaoSb();
+  final sessionDaoSb = SessionDaoSb();
+  final userDaoSb = UserDaoSb();
 
   &#47;&#47; OBTENER EL USUARIO ACTUAL
   final currentUser = context.read&lt;CurrentUser&gt;().user;
   &#47;&#47; OBTENER EL ID DEL USUARIO
-  int idUser = await userDao.getIdUserFromName(currentUser!.username);
+  int idUser = await userDaoSb.getIdUserFromName(currentUser!.username);
   if (idUser == -1) {
     DatabaseHelper.logger.e(&quot;Error al obtener el ID del usuario.&quot;);
   } &#47;&#47; VERIFICAR QUE SI ESTA BIEN EL ID DEL USUARIO
@@ -107,10 +106,10 @@ que se muestran como etiquetas en los campos de texto para ingresar el scramble 
   final tipoCuboEstablecido = context.read&lt;CurrentCubeType&gt;().cubeType;
   final currentSession = context.read&lt;CurrentSession&gt;().session;
   final cubo =
-      await cubeTypeDao.cubeTypeDefault(tipoCuboEstablecido!.cubeName);
+      await cubeTypeDaoSb.getCubeTypeByNameAndIdUser(tipoCuboEstablecido!.cubeName, idUser);
 
   &#47;&#47; BUSCAMOS EL TIPO DE CUBO QUE TIENE ESA SESION
-  Session? sessionTipoActual = await sessionDao.getSessionByUserCubeName(
+  SessionClass? sessionTipoActual = await sessionDaoSb.getSessionByUserCubeName(
       idUser, currentSession!.sessionName, cubo.idCube);
 
   &#47;&#47; CUANDO SELECCIONE UNA SESION, SE BUSCA EL TIPO DE CUBO DE ESA SESION
@@ -119,7 +118,7 @@ que se muestran como etiquetas en los campos de texto para ingresar el scramble 
 
   &#47;&#47; SE BUSCA ESE TIPO DE CUBO POR ESE ID
   CubeType? cubeType =
-      await cubeTypeDao.getCubeById(sessionTipoActual!.idCubeType);
+      await cubeTypeDaoSb.getCubeById(sessionTipoActual!.idCubeType);
   if (cubeType.idCube != -1) {
     &#47;&#47; SE ACTUALIZA EL ESTADO GLOBAL
     currentCube.setCubeType(cubeType);
@@ -153,7 +152,7 @@ que se muestran como etiquetas en los campos de texto para ingresar el scramble 
                 border: const OutlineInputBorder(),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextField(
@@ -168,7 +167,7 @@ que se muestran como etiquetas en los campos de texto para ingresar el scramble 
         ),
         actions: [
           TextButton(
-            onPressed: () async{
+            onPressed: () async {
               String scramble = controllerScramble.text.trim();
               String time = controllerTime.text.trim();
               if (scramble.isNotEmpty &amp;&amp; time.isNotEmpty) {
@@ -178,13 +177,16 @@ que se muestran como etiquetas en los campos de texto para ingresar el scramble 
                     timeInSeconds: double.parse(time));
 
                 &#47;&#47; INSERTAR EL TIEMPO
-                bool isInsert = await timeTrainingDao.insertNewTime(timeTraining);
-                if(isInsert){
+                bool isInsert =
+                    await timeTrainingDaoSb.insertNewTime(timeTraining);
+                if (isInsert) {
                   &#47;&#47; SI SE INSERTO CORRECTAMENTE SE MUESTRA UN SNACKBAR
-                  AlertUtil.showSnackBarInformation(context, &quot;add_time_succesfully&quot;);
+                  AlertUtil.showSnackBarInformation(
+                      context, &quot;add_time_successfully&quot;);
                 } else {
                   &#47;&#47; SI SE INSERTO CORRECTAMENTE SE MUESTRA UN SNACKBAR
-                  AlertUtil.showSnackBarInformation(context, &quot;add_time_error&quot;);
+                  AlertUtil.showSnackBarInformation(
+                      context, &quot;add_time_error&quot;);
                 } &#47;&#47; VERIFICAR SI SE INSERTA EL TIEMPO CORRECTAMENTE
                 Navigator.of(context).pop(); &#47;&#47; CIERRA EL DIALOG
               } else {

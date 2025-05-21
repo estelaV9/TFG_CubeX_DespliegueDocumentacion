@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the deleteTime method from the TimeTrainingDaoSb class, for the Dart programming language.">
+  <title>deleteTime method - TimeTrainingDaoSb class - time_training_dao_sb library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../data_dao_supebase_time_training_dao_sb/data_dao_supebase_time_training_dao_sb-library.html">data\dao\supebase\time_training_dao_sb.dart</a></li>
+    <li><a href="../../data_dao_supebase_time_training_dao_sb/TimeTrainingDaoSb-class.html">TimeTrainingDaoSb</a></li>
+    <li class="self-crumb">deleteTime method</li>
+  </ol>
+  <div class="self-name">deleteTime</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="data_dao_supebase_time_training_dao_sb&#47;TimeTrainingDaoSb-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">deleteTime</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
+<span class="name ">deleteTime</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="deleteTime-param-idTimeTraining"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idTimeTraining</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Método para eliminar un tiempo por su ID.</p>
+<p>Este método elimina un tiempo registrado en la base de datos
+utilizando el ID del tiempo.</p>
+<p>Parámetros:</p>
+<ul>
+<li><code>idTimeTraining</code>: ID del tiempo de entrenamiento que se desea eliminar.</li>
+</ul>
+<p>Retorna:</p>
+<ul>
+<li><code>bool</code>: <code>true</code> si el tiempo fue eliminado correctamente, <code>false</code> si ocurrió un error.</li>
+</ul>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; deleteTime(int idTimeTraining) async {
+  try {
+    &#47;&#47; SE ELIMINA EL TIEMPO CON EL ID PROPORCIONADO
+    final deleteTime = await supabase
+        .from(&#39;timetraining&#39;)
+        .delete()
+        .eq(&#39;idtimetraining&#39;, idTimeTraining)
+        .select();
+
+    &#47;&#47; DEVUELVE TRUE&#47;FALSE SI SE ELIMINO CORRECTAMENTE O NO
+    return deleteTime.isNotEmpty;
+  } catch (e) {
+    &#47;&#47; RETORNA FALSE Y UN MENSAJE SI OCURRE UN ERROR
+    DatabaseHelper.logger.e(&quot;Error al eliminar el tiempo: $e&quot;);
+    return false;
+  }
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../data_dao_supebase_time_training_dao_sb/data_dao_supebase_time_training_dao_sb-library.html">time_training_dao_sb</a></li>
+    <li><a href="../../data_dao_supebase_time_training_dao_sb/TimeTrainingDaoSb-class.html">TimeTrainingDaoSb</a></li>
+    <li class="self-crumb">deleteTime method</li>
+</ol>
+
+    <h5>TimeTrainingDaoSb class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    esteladevega_tfg_cubex
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

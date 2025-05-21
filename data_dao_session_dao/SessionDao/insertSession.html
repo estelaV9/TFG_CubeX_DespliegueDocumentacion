@@ -58,7 +58,7 @@
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
-<span class="name ">insertSession</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="insertSession-param-session"><span class="type-annotation"><a href="../../model_session/Session-class.html">Session</a></span> <span class="parameter-name">session</span></span></li>
+<span class="name ">insertSession</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="insertSession-param-session"><span class="type-annotation"><a href="../../model_session/SessionClass-class.html">SessionClass</a></span> <span class="parameter-name">session</span></span></li>
 </ol>)
 
       
@@ -67,11 +67,11 @@
     
 <section class="desc markdown">
   <p>Método para insertar una nueva sesión en la base de datos.</p>
-<p>Este método recibe un objeto <a href="../../model_session/Session-class.html">Session</a> que contiene los detalles de la sesión a insertar,
+<p>Este método recibe un objeto <a href="https://pub.dev/documentation/gotrue/2.12.0/gotrue/Session-class.html">Session</a> que contiene los detalles de la sesión a insertar,
 como el <code>idUser</code>, <code>sessionName</code>, <code>idCubeType</code>, y <code>creationDate</code>.</p>
 <p>Parámetros:</p>
 <ul>
-<li><code>session</code>: Objeto de tipo <a href="../../model_session/Session-class.html">Session</a> que contiene los datos de la sesión a insertar.</li>
+<li><code>session</code>: Objeto de tipo <a href="https://pub.dev/documentation/gotrue/2.12.0/gotrue/Session-class.html">Session</a> que contiene los datos de la sesión a insertar.</li>
 </ul>
 <p>Retorna:</p>
 <ul>
@@ -83,7 +83,7 @@ como el <code>idUser</code>, <code>sessionName</code>, <code>idCubeType</code>, 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; insertSession(Session session) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; insertSession(SessionClass session) async {
   final db = await DatabaseHelper.database;
   try {
     final result = await db.insert(&#39;sessionTime&#39;, {

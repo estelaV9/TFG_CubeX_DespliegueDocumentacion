@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the getPbTimeBySession method from the TimeTrainingDaoSb class, for the Dart programming language.">
+  <title>getPbTimeBySession method - TimeTrainingDaoSb class - time_training_dao_sb library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../data_dao_supebase_time_training_dao_sb/data_dao_supebase_time_training_dao_sb-library.html">data\dao\supebase\time_training_dao_sb.dart</a></li>
+    <li><a href="../../data_dao_supebase_time_training_dao_sb/TimeTrainingDaoSb-class.html">TimeTrainingDaoSb</a></li>
+    <li class="self-crumb">getPbTimeBySession method</li>
+  </ol>
+  <div class="self-name">getPbTimeBySession</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="data_dao_supebase_time_training_dao_sb&#47;TimeTrainingDaoSb-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">getPbTimeBySession</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+<span class="name ">getPbTimeBySession</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="getPbTimeBySession-param-timesList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span> <span class="parameter-name">timesList</span>, </span></li>
+<li><span class="parameter" id="getPbTimeBySession-param-isDnf"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isDnf</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Método para obtener el mejor tiempo registrado en una sesión.</p>
+<p>Este método recorre la lista de tiempos de la sesión y devuelve el mejor tiempo
+en formato "minutos:segundos.decimal".
+Se valida que el mejor tiempo no contenga una penalización DNF.</p>
+<p>Parámetros:</p>
+<ul>
+<li><code>timesList</code>: Lista de tiempos <a href="../../model_time_training/TimeTraining-class.html">TimeTraining</a> para los cuales se calcula el mejor tiempo.</li>
+<li><code>isDnf</code>: Booleano para saber si el tiempo actual al que se le esta aplicando este método
+ha sido establecido como DNF.</li>
+</ul>
+<p>Retorna:</p>
+<ul>
+<li><code>String</code>: El mejor tiempo en formato "minutos:segundos.decimal" que no contenga un DNF.</li>
+<li>"0:00.00": Si no hay tiempos antes o si los anteriores tiempos tienen una penalizacion
+de DNF entonces retornará el tiempo en formato "0:00.00".</li>
+</ul>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Future&lt;String&gt; getPbTimeBySession(
+    List&lt;TimeTraining&gt; timesList, bool isDnf) async {
+  var pbTime = 0.0; &#47;&#47; INICIALIZAR EL MEJOR TIEMPO
+  var worstTime = 0.0; &#47;&#47; INICIALIZAR EL PEOR TIEMPO
+  int minutes = 0;
+  &#47;&#47; ATRIBUTO PARA SABER SSI TODOS LOS TIEMPOS SON DNF
+  bool isDnfAll = false;
+  &#47;&#47; CONTADOR PARA SABER CUANDOS TIEMPOS SON DNF
+  int cont = 0;
+
+  for (var tim in timesList) {
+    &#47;&#47; SI EL TIEMPO TIENE UNA PENALIZACION DE &#39;DNF&#39; SUBE EL CONTADOR
+    if (tim.penalty == &quot;DNF&quot;) cont++;
+  } &#47;&#47; SE RECORRE LA LSITA
+
+  &#47;&#47; CUENTA EL ULTIMO TIEMPO SI LE PONE UN DNF
+  if (isDnf == true) cont++;
+
+  &#47;&#47; SI EL CONTADOR Y EL NUMERO TOTAL DE TIEMPOS ES EL MISMO SIGNIFICA QUE
+  &#47;&#47; TODOS LOS TIEMPOS TIENEN DNF
+  if (cont == timesList.length) isDnfAll = true;
+
+  &#47;&#47; SI HA PUESTO DNF Y TODA LA LISTA TIENE DNF
+  if (isDnfAll == true) return &quot;0:00.00&quot;;
+
+  if (isDnf) {
+    &#47;&#47; SI EL TIEMPO ACTUAL SE LE AÑADE UN DNF, ENTONCES SE RECORRE TODOS LOS TIEMPOS
+    &#47;&#47; MENOS EL ACTUAL, PARA SABER QUE TIEMPO ES EL PEOR Y SIN DNF
+    for (int index = 0; index &lt;= (timesList.length - 2); index++) {
+      if (timesList[index].timeInSeconds &gt; worstTime &amp;&amp;
+          timesList[index].penalty != &quot;DNF&quot;) {
+        worstTime = timesList[index].timeInSeconds;
+      } &#47;&#47; SI EL TIEMPO ES MENOR AL PEOR TIEMPO SE ESTABLECE
+    }
+
+    pbTime = worstTime; &#47;&#47; EL MEJOR TIEMPO ES EL PEOR (para darle un valor)
+
+    for (int index = 0; index &lt;= (timesList.length - 2); index++) {
+      if (timesList[index].timeInSeconds &lt; pbTime &amp;&amp;
+          timesList[index].penalty != &quot;DNF&quot;) {
+        pbTime = timesList[index].timeInSeconds;
+      } &#47;&#47; SI EL TIEMPO ES MAYOR AL MEJOR TIEMPO SE ESTABLECE
+    }
+  } else {
+    for (var times in timesList) {
+      if (times.timeInSeconds &gt; worstTime &amp;&amp; times.penalty != &quot;DNF&quot;) {
+        worstTime = times.timeInSeconds;
+      } &#47;&#47; SI EL TIEMPO ES MENOR AL PEOR TIEMPO SE ESTABLECE
+    } &#47;&#47; SE RECORRE TODOS LOS TIEMPOS BUSCANDO EL PEOR TIEMPO DE LA SESION
+
+    pbTime = worstTime; &#47;&#47; EL MEJOR TIEMPO ES EL PEOR (para darle un valor)
+
+    for (var times in timesList) {
+      &#47;&#47; SI EL TIEMPO NO TIENE DNF Y ES MENOR QUE EL MEJOR TIEMPO, SE ACTUALIZA EL PB
+      if (times.timeInSeconds &lt; pbTime &amp;&amp; times.penalty != &quot;DNF&quot;) {
+        pbTime = times.timeInSeconds;
+      } &#47;&#47; SI EL TIEMPO ES MAYOR AL MEJOR TIEMPO SE ESTABLECE
+    } &#47;&#47; SE RECORRE TODOS LOS TIEMPOS BUSCANDO EL MEJOR TIEMPO DE LA SESION
+  }
+
+  while (pbTime &gt;= 60) {
+    minutes++;
+    pbTime -= 60; &#47;&#47; RESTANIS 60 SEGUNDO CUANDO PASE UN MINUTO
+  } &#47;&#47; RECORREMOS EL TIEMPO MIENTRAS TENGA MINUTOS
+
+  if (pbTime &lt; 10) {
+    return &quot;$minutes:0${pbTime.toStringAsFixed(2)}&quot;;
+  } else {
+    return &quot;$minutes:${pbTime.toStringAsFixed(2)}&quot;;
+  } &#47;&#47; DEVUELVE ELMEJOR TIEMPO FORMATEADO
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../data_dao_supebase_time_training_dao_sb/data_dao_supebase_time_training_dao_sb-library.html">time_training_dao_sb</a></li>
+    <li><a href="../../data_dao_supebase_time_training_dao_sb/TimeTrainingDaoSb-class.html">TimeTrainingDaoSb</a></li>
+    <li class="self-crumb">getPbTimeBySession method</li>
+</ol>
+
+    <h5>TimeTrainingDaoSb class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    esteladevega_tfg_cubex
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

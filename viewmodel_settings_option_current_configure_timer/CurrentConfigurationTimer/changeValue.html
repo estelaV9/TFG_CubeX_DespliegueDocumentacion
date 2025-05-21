@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the changeValue method from the CurrentConfigurationTimer class, for the Dart programming language.">
+  <title>changeValue method - CurrentConfigurationTimer class - current_configure_timer library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../viewmodel_settings_option_current_configure_timer/viewmodel_settings_option_current_configure_timer-library.html">viewmodel\settings_option\current_configure_timer.dart</a></li>
+    <li><a href="../../viewmodel_settings_option_current_configure_timer/CurrentConfigurationTimer-class.html">CurrentConfigurationTimer</a></li>
+    <li class="self-crumb">changeValue method</li>
+  </ol>
+  <div class="self-name">changeValue</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="viewmodel_settings_option_current_configure_timer&#47;CurrentConfigurationTimer-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">changeValue</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype">void</span>
+<span class="name ">changeValue</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="changeValue-param-hideRunningTime"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">hideRunningTime</span>, </span></li>
+<li><span class="parameter" id="changeValue-param-recordTimeAlert"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">recordTimeAlert</span>, </span></li>
+<li><span class="parameter" id="changeValue-param-bestAverageAlert"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">bestAverageAlert</span>, </span></li>
+<li><span class="parameter" id="changeValue-param-worstTimeAlert"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">worstTimeAlert</span>, </span></li>
+<li><span class="parameter" id="changeValue-param-isActiveInspection"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">isActiveInspection</span>, </span></li>
+<li><span class="parameter" id="changeValue-param-inspectionSeconds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">inspectionSeconds</span>, </span></li>
+<li><span class="parameter" id="changeValue-param-alertAt8And12Seconds"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">alertAt8And12Seconds</span>, </span></li>
+<li><span class="parameter" id="changeValue-param-inspectionAlertType"><span class="type-annotation"><a href="../../model_configuration_timer/InspectionAlertType.html">InspectionAlertType</a>?</span> <span class="parameter-name">inspectionAlertType</span>, </span></li>
+</ol>})
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Método que modifica un valor específico de configuración del timer.</p>
+<p>Este método permite modificar una opción concreta de configuración,
+actualizando el objeto <code>ConfigurationTimer</code>, guardando el cambio en
+<code>SharedPreferences</code>, y notificando a los listeners.</p>
+<p>Solo los parámetros proporcionados serán actualizados. Los que se omitan
+mantendrán su valor actual.</p>
+<p>Parámetros opcionales:</p>
+<ul>
+<li><code>hideRunningTime</code>: Oculta el tiempo durante una resolución.</li>
+<li><code>recordTimeAlert</code>: Muestra una alerta cuando se bate el mejor tiempo (PB).</li>
+<li><code>bestAverageAlert</code>: Muestra una alerta cuando se bate el mejor promedio.</li>
+<li><code>worstTimeAlert</code>: Muestra una alerta cuando se bate el peor tiempo registrado.</li>
+<li><code>isActiveInspection</code>: Activa o desactiva la cuenta atrás de inspección.</li>
+<li><code>inspectionSeconds</code>: Número de segundos para la inspección antes de iniciar.</li>
+<li><code>alertAt8And12Seconds</code>: Activa/desactiva la alerta de los ocho y doce segundos en el
+tiempo de inspección.</li>
+<li><code>inspectionAlertType</code>: Tipo de alerta si esta activada la alerta en el tiempo de inspección.</li>
+</ul>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">void changeValue({
+  bool? hideRunningTime,
+  bool? recordTimeAlert,
+  bool? bestAverageAlert,
+  bool? worstTimeAlert,
+  bool? isActiveInspection,
+  int? inspectionSeconds,
+  bool? alertAt8And12Seconds,
+  InspectionAlertType? inspectionAlertType,
+}) async {
+  configurationTimer = ConfigurationTimer(
+    hideRunningTime: hideRunningTime ?? configurationTimer.hideRunningTime,
+    recordTimeAlert: recordTimeAlert ?? configurationTimer.recordTimeAlert,
+    bestAverageAlert: bestAverageAlert ?? configurationTimer.bestAverageAlert,
+    worstTimeAlert: worstTimeAlert ?? configurationTimer.worstTimeAlert,
+    isActiveInspection: isActiveInspection ?? configurationTimer.isActiveInspection,
+    inspectionSeconds: inspectionSeconds ?? configurationTimer.inspectionSeconds,
+    alertAt8And12Seconds: alertAt8And12Seconds ?? configurationTimer.alertAt8And12Seconds,
+    inspectionAlertType: inspectionAlertType ?? configurationTimer.inspectionAlertType,
+  );
+  await configurationTimer.saveToPreferences(prefs);
+  notifyListeners();
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">esteladevega_tfg_cubex</a></li>
+    <li><a href="../../viewmodel_settings_option_current_configure_timer/viewmodel_settings_option_current_configure_timer-library.html">current_configure_timer</a></li>
+    <li><a href="../../viewmodel_settings_option_current_configure_timer/CurrentConfigurationTimer-class.html">CurrentConfigurationTimer</a></li>
+    <li class="self-crumb">changeValue method</li>
+</ol>
+
+    <h5>CurrentConfigurationTimer class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    esteladevega_tfg_cubex
+      1.0.0+1
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

@@ -162,6 +162,19 @@
 
 </dd>
 
+        <dt id="saveToPreferences" class="callable">
+  <span class="name"><a href="../model_cubetype/CubeType/saveToPreferences.html">saveToPreferences</a></span><span class="signature">(<wbr><span class="parameter" id="saveToPreferences-param-prefs"><span class="type-annotation"><a href="https://pub.dev/documentation/shared_preferences/2.5.3/shared_preferences/SharedPreferences-class.html">SharedPreferences</a></span> <span class="parameter-name">prefs</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Guarda los datos del tipo de cubo actual en <a href="https://pub.dev/documentation/shared_preferences/2.5.3/shared_preferences/SharedPreferences-class.html">SharedPreferences</a>.
+  
+
+</dd>
+
         <dt id="toString" class="callable">
   <span class="name"><a href="../model_cubetype/CubeType/toString.html">toString</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
@@ -199,7 +212,55 @@
     </dl>
   </section>
     
+  <section class="summary offset-anchor" id="static-properties">
+    <h2>Static Properties</h2>
+    <dl class="properties">
+        <dt id="preferences" class="property">
+  <span class="name"><a href="../model_cubetype/CubeType/preferences.html">preferences</a></span>
+  <span class="signature">&#8596; <a href="https://pub.dev/documentation/shared_preferences/2.5.3/shared_preferences/SharedPreferences-class.html">SharedPreferences</a></span>
+  
+
+</dt>
+<dd>
+  Instancia de las preferencias compartidas.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+    </dl>
+  </section>
     
+  <section class="summary offset-anchor" id="static-methods">
+    <h2>Static Methods</h2>
+    <dl class="callables">
+        <dt id="loadFromPreferences" class="callable">
+  <span class="name"><a href="../model_cubetype/CubeType/loadFromPreferences.html">loadFromPreferences</a></span><span class="signature">(<wbr><span class="parameter" id="loadFromPreferences-param-prefs"><span class="type-annotation"><a href="https://pub.dev/documentation/shared_preferences/2.5.3/shared_preferences/SharedPreferences-class.html">SharedPreferences</a></span> <span class="parameter-name">prefs</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../model_cubetype/CubeType-class.html">CubeType</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Recupera un objeto <code>CubeType</code> desde los datos guardados en <code>SharedPreferences</code>.
+  
+
+</dd>
+
+        <dt id="startPreferences" class="callable">
+  <span class="name"><a href="../model_cubetype/CubeType/startPreferences.html">startPreferences</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Inicializa las preferencias compartidas con valores por defecto si aún no existen.
+  
+
+</dd>
+
+    </dl>
+  </section>
     
 
   </div> <!-- /.main-content -->

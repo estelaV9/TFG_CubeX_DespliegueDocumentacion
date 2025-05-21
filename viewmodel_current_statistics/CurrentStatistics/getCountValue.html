@@ -75,7 +75,7 @@ y retorna el número de tiempos que hay en una sesión.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;String&gt; getCountValue() async {
-  int count = await TimeTrainingDao().getCountBySession(_timesList);
+  int count = await TimeTrainingDaoSb().getCountBySession(_timesList);
   return count.toString();
 }</code></pre>
 </section>

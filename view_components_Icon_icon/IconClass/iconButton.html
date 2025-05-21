@@ -59,10 +59,13 @@
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/material/IconButton-class.html">IconButton</a></span>
 <span class="name ">iconButton</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="iconButton-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span></li>
-<li><span class="parameter" id="iconButton-param-function"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-ui/VoidCallback.html">VoidCallback</a></span> <span class="parameter-name">function</span>, </span></li>
+<li><span class="parameter" id="iconButton-param-function"><span class="type-annotation">dynamic</span> <span class="parameter-name">function</span>()?, </span></li>
 <li><span class="parameter" id="iconButton-param-tooltip"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">tooltip</span>, </span></li>
-<li><span class="parameter" id="iconButton-param-icon"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/IconData-class.html">IconData</a></span> <span class="parameter-name">icon</span>, </span></li>
-</ol>)
+<li><span class="parameter" id="iconButton-param-icon"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/IconData-class.html">IconData</a></span> <span class="parameter-name">icon</span>, [</span></li>
+<li><span class="parameter" id="iconButton-param-colors"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/painting/Color-class.html">Color</a>?</span> <span class="parameter-name">colors</span> = <span class="default-value">AppColors.darkPurpleColor</span>, </span></li>
+<li><span class="parameter" id="iconButton-param-size"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a>?</span> <span class="parameter-name">size</span>, </span></li>
+<li><span class="parameter" id="iconButton-param-padding"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/painting/EdgeInsetsGeometry-class.html">EdgeInsetsGeometry</a>?</span> <span class="parameter-name">padding</span>, </span></li>
+</ol>])
 
       
 
@@ -78,6 +81,9 @@ en el botón, se ejecuta la función proporcionada.</p>
 <li><code>function</code>: La función que se ejecutará cuando el botón sea presionado.</li>
 <li><code>tooltip</code>: La clave de mensaje para obtener el texto del Tooltip.</li>
 <li><code>icon</code>: El icono que se va a mostrar en el <code>IconButton</code>.</li>
+<li><code>colors</code>: Color para el icono opcional, el cual por defecto será un morado oscuro.</li>
+<li><code>size</code>: El tamaño del icono del botón. Si es <code>null</code>, pondrá el valor predeterminado.</li>
+<li><code>padding</code>: Padding del botón. Si es <code>null</code>, aplica el padding predeterminado.</li>
 </ul>
 </section>
 
@@ -85,17 +91,20 @@ en el botón, se ejecuta la función proporcionada.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static IconButton iconButton(BuildContext context,
-    VoidCallback function, String tooltip, IconData icon) {
-  final messageTooltip = Internationalization.internationalization.getLocalizations(context, tooltip);
+  <pre class="language-dart"><code class="language-dart">static IconButton iconButton(
+    BuildContext context, Function()? function, String tooltip, IconData icon,
+    [Color? colors = AppColors.darkPurpleColor,
+    double? size,
+    EdgeInsetsGeometry? padding]) {
+  final messageTooltip = Internationalization.internationalization
+      .getLocalizations(context, tooltip);
 
   return IconButton(
-      onPressed: () {
-        function();
-      },
-      color: AppColors.darkPurpleColor,
+      onPressed: function,
+      color: colors,
+      padding: padding,
       tooltip: messageTooltip,
-      icon: Icon(icon));
+      icon: Icon(icon, size: size));
 }</code></pre>
 </section>
 

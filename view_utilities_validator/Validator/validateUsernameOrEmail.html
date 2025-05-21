@@ -72,7 +72,7 @@
 </ul>
 <p>Si contiene un '@', se valida como correo electrónico.
 Si no, se verifica que el nombre de usuario no exceda los 12 caracteres.</p>
-<p>Retorna un mensaje de error si la validación falla o <code>null</code> si es exitosa.</p>
+<p>Retorna la key del un mensaje de error si la validación falla o <code>null</code> si es exitosa.</p>
 </section>
 
 
@@ -81,17 +81,17 @@ Si no, se verifica que el nombre de usuario no exceda los 12 caracteres.</p>
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static String? validateUsernameOrEmail(String? value) {
   if (value == null || value.isEmpty) {
-    return &#39;Please fill in this field.&#39;;
+    return &#39;form_error_required_field&#39;;
   } &#47;&#47; VALIDAR CAMPOS VACIOS
 
   if (value.contains(&quot;@&quot;) &amp;&amp;
       !RegExp(r&#39;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$&#39;)
           .hasMatch(value)) {
-    return &#39;Please enter a valid email&#39;;
+    return &#39;form_error_invalid_email&#39;;
   } &#47;&#47; VALIDAR EL CAMPO DEL EMAIL
 
   if (value.length &gt; 12 &amp;&amp; !value.contains(&quot;@&quot;)) {
-    return &quot;Name mustn&#39;t exceed 12 characters.&quot;;
+    return &quot;form_error_name_max_length&quot;;
   } &#47;&#47; SE VALIDA EL NOMBRE, CUADNO NO CONTENGA UN &#39;@&#39; SE VALIDARA QUE NO SEA MAYOR DE 12 CARACTERES
 
   return null;

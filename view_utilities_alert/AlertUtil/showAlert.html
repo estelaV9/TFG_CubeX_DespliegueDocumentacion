@@ -58,11 +58,9 @@
     <section class="multi-line-signature">
       
 <span class="returntype">void</span>
-<span class="name ">showAlert</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="showAlert-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">key</span>, </span></li>
+<span class="name ">showAlert</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="showAlert-param-key"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">key</span>, </span></li>
 <li><span class="parameter" id="showAlert-param-contentKey"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">contentKey</span>, </span></li>
-<li><span class="parameter" id="showAlert-param-title"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">title</span>, </span></li>
-<li><span class="parameter" id="showAlert-param-content"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">content</span>, </span></li>
-<li><span class="parameter" id="showAlert-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span>, </span></li>
+<li><span class="parameter" id="showAlert-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span></li>
 </ol>)
 
       
@@ -80,8 +78,7 @@ y el parámetro <code>content</code> define el contenido que se muestra en el cu
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static void showAlert(String key, String contentKey, String title,
-    String content, BuildContext context) {
+  <pre class="language-dart"><code class="language-dart">static void showAlert(String key, String contentKey, BuildContext context) {
   showDialog(
       context: context,
       builder: (context) {

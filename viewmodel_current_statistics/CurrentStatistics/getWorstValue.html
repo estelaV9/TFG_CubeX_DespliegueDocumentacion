@@ -58,7 +58,8 @@
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
-<span class="name ">getWorstValue</span>(<wbr>)
+<span class="name ">getWorstValue</span>(<wbr>[<ol class="parameter-list single-line"> <li><span class="parameter" id="getWorstValue-param-isDnf"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isDnf</span> = <span class="default-value">false</span></span></li>
+</ol>])
 
       
 
@@ -68,14 +69,18 @@
   <p>Obtiene el <strong>peor tiempo</strong> de la sesión actual.</p>
 <p>Llama al método DAO de tiempos <code>getWorstTimeBySession(timesList)</code>
 y retorna el peor tiempo.</p>
+<p>Parámetros:</p>
+<ul>
+<li><code>isDnf</code> (opcional): Atributo para saber si ha puesto un DNF al tiempo actual.</li>
+</ul>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;String&gt; getWorstValue() async {
-  return await TimeTrainingDao().getWorstTimeBySession(_timesList);
+  <pre class="language-dart"><code class="language-dart">Future&lt;String&gt; getWorstValue([bool isDnf = false]) async {
+  return await TimeTrainingDaoSb().getWorstTimeBySession(_timesList, isDnf);
 }</code></pre>
 </section>
 

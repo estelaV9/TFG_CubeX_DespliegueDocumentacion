@@ -58,7 +58,8 @@
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
-<span class="name ">getPbTimeBySession</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="getPbTimeBySession-param-timesList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span> <span class="parameter-name">timesList</span></span></li>
+<span class="name ">getPbTimeBySession</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="getPbTimeBySession-param-timesList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span> <span class="parameter-name">timesList</span>, </span></li>
+<li><span class="parameter" id="getPbTimeBySession-param-isDnf"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isDnf</span></span></li>
 </ol>)
 
       
@@ -68,14 +69,19 @@
 <section class="desc markdown">
   <p>Método para obtener el mejor tiempo registrado en una sesión.</p>
 <p>Este método recorre la lista de tiempos de la sesión y devuelve el mejor tiempo
-en formato "minutos:segundos.decimal".</p>
+en formato "minutos:segundos.decimal".
+Se valida que el mejor tiempo no contenga una penalización DNF.</p>
 <p>Parámetros:</p>
 <ul>
 <li><code>timesList</code>: Lista de tiempos <a href="../../model_time_training/TimeTraining-class.html">TimeTraining</a> para los cuales se calcula el mejor tiempo.</li>
+<li><code>isDnf</code>: Booleano para saber si el tiempo actual al que se le esta aplicando este método
+ha sido establecido como DNF.</li>
 </ul>
 <p>Retorna:</p>
 <ul>
-<li><code>String</code>: El mejor tiempo en formato "minutos:segundos.decimal".</li>
+<li><code>String</code>: El mejor tiempo en formato "minutos:segundos.decimal" que no contenga un DNF.</li>
+<li>"0:00.00": Si no hay tiempos antes o si los anteriores tiempos tienen una penalizacion
+de DNF entonces retornará el tiempo en formato "0:00.00".</li>
 </ul>
 </section>
 
@@ -83,24 +89,67 @@ en formato "minutos:segundos.decimal".</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;String&gt; getPbTimeBySession(List&lt;TimeTraining&gt; timesList) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;String&gt; getPbTimeBySession(
+    List&lt;TimeTraining&gt; timesList, bool isDnf) async {
   var pbTime = 0.0; &#47;&#47; INICIALIZAR EL MEJOR TIEMPO
   var worstTime = 0.0; &#47;&#47; INICIALIZAR EL PEOR TIEMPO
   int minutes = 0;
+  &#47;&#47; ATRIBUTO PARA SABER SSI TODOS LOS TIEMPOS SON DNF
+  bool isDnfAll = false;
+  &#47;&#47; CONTADOR PARA SABER CUANDOS TIEMPOS SON DNF
+  int cont = 0;
 
-  for (var times in timesList) {
-    if (times.timeInSeconds &gt; worstTime) {
-      worstTime = times.timeInSeconds;
-    } &#47;&#47; SI EL TIEMPO ES MENOR AL PEOR TIEMPO SE ESTABLECE
-  } &#47;&#47; SE RECORRE TODOS LOS TIEMPOS BUSCANDO EL PEOR TIEMPO DE LA SESION
+  for (var tim in timesList) {
+    &#47;&#47; SI EL TIEMPO TIENE UNA PENALIZACION DE &#39;DNF&#39; SUBE EL CONTADOR
+    if (tim.penalty == &quot;DNF&quot;) cont++;
+  } &#47;&#47; SE RECORRE LA LSITA
 
-  pbTime = worstTime; &#47;&#47; EL MEJOR TIEMPO ES EL PEOR (para darle un valor)
+  &#47;&#47; CUENTA EL ULTIMO TIEMPO SI LE PONE UN DNF
+  if (isDnf == true) cont++;
 
-  for (var times in timesList) {
-    if (times.timeInSeconds &lt; pbTime) {
-      pbTime = times.timeInSeconds;
-    } &#47;&#47; SI EL TIEMPO ES MAYOR AL MEJOR TIEMPO SE ESTABLECE
-  } &#47;&#47; SE RECORRE TODOS LOS TIEMPOS BUSCANDO EL MEJOR TIEMPO DE LA SESION
+  &#47;&#47; SI EL CONTADOR Y EL NUMERO TOTAL DE TIEMPOS ES EL MISMO SIGNIFICA QUE
+  &#47;&#47; TODOS LOS TIEMPOS TIENEN DNF
+  if (cont == timesList.length) isDnfAll = true;
+
+  &#47;&#47; SI HA PUESTO DNF Y TODA LA LISTA TIENE DNF
+  if (isDnfAll == true) return &quot;0:00.00&quot;;
+
+  if (isDnf) {
+    &#47;&#47; SI EL TIEMPO ACTUAL SE LE AÑADE UN DNF, ENTONCES SE RECORRE TODOS LOS TIEMPOS
+    &#47;&#47; MENOS EL ACTUAL, PARA SABER QUE TIEMPO ES EL PEOR Y SIN DNF
+    for (int index = 0; index &lt;= (timesList.length - 2); index++) {
+      if (timesList[index].timeInSeconds &gt; worstTime &amp;&amp;
+          timesList[index].penalty != &quot;DNF&quot;) {
+        worstTime = timesList[index].timeInSeconds;
+      } &#47;&#47; SI EL TIEMPO ES MENOR AL PEOR TIEMPO SE ESTABLECE
+    }
+
+    pbTime = worstTime; &#47;&#47; EL MEJOR TIEMPO ES EL PEOR (para darle un valor)
+
+    for (int index = 0; index &lt;= (timesList.length - 2); index++) {
+      if (timesList[index].timeInSeconds &lt; pbTime &amp;&amp;
+          timesList[index].penalty != &quot;DNF&quot;) {
+        pbTime = timesList[index].timeInSeconds;
+      } &#47;&#47; SI EL TIEMPO ES MAYOR AL MEJOR TIEMPO SE ESTABLECE
+    }
+
+  } else {
+    for (var times in timesList) {
+      if (times.timeInSeconds &gt; worstTime &amp;&amp; times.penalty != &quot;DNF&quot;) {
+        worstTime = times.timeInSeconds;
+      } &#47;&#47; SI EL TIEMPO ES MENOR AL PEOR TIEMPO SE ESTABLECE
+    } &#47;&#47; SE RECORRE TODOS LOS TIEMPOS BUSCANDO EL PEOR TIEMPO DE LA SESION
+
+    pbTime = worstTime; &#47;&#47; EL MEJOR TIEMPO ES EL PEOR (para darle un valor)
+
+    for (var times in timesList) {
+      &#47;&#47; SI EL TIEMPO NO TIENE DNF Y ES MENOR QUE EL MEJOR TIEMPO, SE ACTUALIZA EL PB
+      if (times.timeInSeconds &lt; pbTime &amp;&amp;
+          times.penalty != &quot;DNF&quot;) {
+        pbTime = times.timeInSeconds;
+      } &#47;&#47; SI EL TIEMPO ES MAYOR AL MEJOR TIEMPO SE ESTABLECE
+    } &#47;&#47; SE RECORRE TODOS LOS TIEMPOS BUSCANDO EL MEJOR TIEMPO DE LA SESION
+  }
 
   while (pbTime &gt;= 60) {
     minutes++;

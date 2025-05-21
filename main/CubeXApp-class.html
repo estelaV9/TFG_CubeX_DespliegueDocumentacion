@@ -58,8 +58,11 @@
     
 <section class="desc markdown">
   <p>Clase principal de la aplicación CubeX.</p>
-<p>La clase CubeXApp configura el idioma y la pantalla inicial
-de la aplicación a través de un <code>MaterialApp</code>.</p>
+<p>La clase <code>CubeXApp</code> es el punto de entrada de la aplicación, aqui se configura
+el idioma y la pantalla inicial de la aplicación a través de un <code>MaterialApp</code>.
+En esta clase, se inicializa el sistema de localización, se verifica el estado de sesión del usuario,
+y se establece la pantalla correspondiente (ya sea la pantalla de inicio de sesión
+o la pantalla principal, dependiendo de si esta logeado o no)</p>
 </section>
 
 
@@ -72,7 +75,7 @@ de la aplicación a través de un <code>MaterialApp</code>.</p>
       <li><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></li>
         <li><a href="https://api.flutter.dev/flutter/foundation/DiagnosticableTree-class.html">DiagnosticableTree</a></li>
         <li><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></li>
-        <li><a href="https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html">StatelessWidget</a></li>
+        <li><a href="https://api.flutter.dev/flutter/widgets/StatefulWidget-class.html">StatefulWidget</a></li>
       <li>CubeXApp</li>
     </ul>
   </dd>
@@ -152,29 +155,29 @@ de la aplicación a través de un <code>MaterialApp</code>.</p>
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
-        <dt id="build" class="callable">
-  <span class="name"><a href="../main/CubeXApp/build.html">build</a></span><span class="signature">(<wbr><span class="parameter" id="build-param-context"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/widgets/BuildContext-class.html">BuildContext</a></span> <span class="parameter-name">context</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Describes the part of the user interface represented by this widget.
-  <div class="features"><span class="feature">override</span></div>
-
-</dd>
-
         <dt id="createElement" class="callable inherited">
-  <span class="name"><a href="https://api.flutter.dev/flutter/widgets/StatelessWidget/createElement.html">createElement</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/widgets/StatelessElement-class.html">StatelessElement</a></span>
+  <span class="name"><a href="https://api.flutter.dev/flutter/widgets/StatefulWidget/createElement.html">createElement</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/widgets/StatefulElement-class.html">StatefulElement</a></span>
   </span>
   
 
 </dt>
 <dd class="inherited">
-  Creates a <a href="https://api.flutter.dev/flutter/widgets/StatelessElement-class.html">StatelessElement</a> to manage this widget's location in the tree.
+  Creates a <a href="https://api.flutter.dev/flutter/widgets/StatefulElement-class.html">StatefulElement</a> to manage this widget's location in the tree.
   <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="createState" class="callable">
+  <span class="name"><a href="../main/CubeXApp/createState.html">createState</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/widgets/State-class.html">State</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../main/CubeXApp-class.html">CubeXApp</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Creates the mutable state for this widget at a given location in the tree.
+  <div class="features"><span class="feature">override</span></div>
 
 </dd>
 

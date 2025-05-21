@@ -180,213 +180,219 @@ prints green, as expected.</p>
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   return Scaffold(
-    appBar: AppBar(
-      title:
-          Internationalization.internationalization.createLocalizedSemantics(
-        context,
-        &quot;settings&quot;,
-        &quot;settings&quot;,
-        &quot;settings&quot;,
-        const TextStyle(fontFamily: &#39;Broadway&#39;, fontSize: 35),
-      ),
-      centerTitle: true,
-      backgroundColor: AppColors.lightVioletColor,
-    ),
-    body: Container(
-      padding: const EdgeInsets.all(20),
-      decoration: const BoxDecoration(
-        &#47;&#47; COLOR DEGRADADO PARA EL FONDO
-        gradient: LinearGradient(
-          begin: Alignment.topCenter, &#47;&#47; DESDE ARRIBA
-          end: Alignment.bottomCenter, &#47;&#47; HASTA ABAJO
-          colors: [
-            &#47;&#47; COLOR DE ARRIBA DEL DEGRADADO
-            AppColors.upLinearColor,
-            &#47;&#47; COLOR DE ABAJO DEL DEGRADADO
-            AppColors.downLinearColor,
-          ],
-        ),
-      ),
-      child: Column(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+    appBar: AppBarClass.appBarWithBack(context, &quot;settings&quot;),
+    body: SingleChildScrollView(
+      child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: AppStyles.boxDecorationContainer(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              &#47;&#47; IMAGEN DEL USUARIO
-              CircleAvatar(
-                radius: 60,
-                backgroundColor: AppColors.imagenBg,
-                child: Image.asset(&quot;assets&#47;default_user_image.png&quot;),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  &#47;&#47; IMAGEN DEL USUARIO
+                  ClipOval(
+                    child: Image.network(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                      width: 140,
+                      height: 140,
+                    ),
+                  ),
+                  &#47;&#47; COLUMNA PARA EL NOMBRE Y EL MAIL DEL USUARIO
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Column(
+                      &#47;&#47; SE ALINEA A LA IZQUIERDA
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        &#47;&#47; NOMBRE USUARIO
+                        Text(
+                          returnName(),
+                          style: const TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.purpleIntroColor,
+                          ),
+                        ),
+
+                        &#47;&#47; MAIL USUARIO, SI EL NOMBRE DE USUARIO ES LARGO SE SALTA DE LINEA
+                        Container(
+                          constraints: const BoxConstraints(maxWidth: 200),
+                          child: Text(
+                            mail,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: AppColors.purpleIntroColor,
+                              overflow: TextOverflow.visible,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
 
-              &#47;&#47; COLUMNA PARA EL NOMBRE Y EL MAIL DEL USUARIO
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Column(
-                  &#47;&#47; SE ALINEA A LA IZQUIERDA
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    &#47;&#47; NOMBRE USUARIO
-                    Text(
-                      returnName(),
-                      style: const TextStyle(
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.purpleIntroColor,
-                      ),
-                    ),
+              const SizedBox(height: 20),
 
-                    &#47;&#47; MAIL USUARIO
-                    Text(
-                      mail,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: AppColors.purpleIntroColor,
-                      ),
-                    ),
-                  ],
+              &#47;&#47; GENERAL
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Internationalization.internationalization
+                    .localizedTextOnlyKey(
+                  context,
+                  &quot;general&quot;,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.lightVioletColor),
                 ),
               ),
-            ],
-          ),
 
-          const SizedBox(
-            height: 20,
-          ),
+              &#47;&#47; IDIOMAS
+              SettingsContainer(
+                functionArrow: () {
+                  AlertUtil.showChangeLanguague(context);
+                },
+                name: Internationalization.internationalization.getLocalizations(context, &quot;languages&quot;),
+                icon: Icons.language,
+                tooltip: Internationalization.internationalization.getLocalizations(context, &quot;select_languages&quot;),
+              ),
 
-          &#47;&#47; GENERAL
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Internationalization.internationalization
-                .createLocalizedSemantics(
-              context,
-              &quot;general&quot;,
-              &quot;general&quot;,
-              &quot;general&quot;,
-              const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.lightVioletColor),
-            ),
-          ),
+              const SizedBox(height: 10),
 
-          &#47;&#47; IDIOMAS
-          SettingsContainer(
-            functionArrow: () {
-              AlertUtil.showChangeLanguague(context, &quot;dsaf&quot;);
-            },
-            name: Internationalization.internationalization.getLocalizations(context, &quot;languages&quot;),
-            icon: Icons.language,
-            tooltip: Internationalization.internationalization.getLocalizations(context, &quot;select_languages&quot;),
-          ),
+              &#47;&#47; NOTIFICACIONES
+              SettingsContainer(
+                functionArrow: () {
+                  &#47;&#47; IR A LA PANTALLA DE NOTIFICACIONES
+                  ChangeScreen.changeScreen(const NotificationScreen(), context);
+                },
+                name: Internationalization.internationalization.getLocalizations(context, &quot;notification&quot;),
+                icon: Icons.notifications,
+                tooltip: Internationalization.internationalization.getLocalizations(context, &quot;select_notification&quot;),
+              ),
 
-          const SizedBox(
-            height: 10,
-          ),
+              const SizedBox(height: 20),
 
-          &#47;&#47; NOTIFICACIONES
-          SettingsContainer(
-            functionArrow: () {},
-            name: Internationalization.internationalization.getLocalizations(context, &quot;notification&quot;),
-            icon: Icons.notifications,
-            tooltip: Internationalization.internationalization.getLocalizations(context, &quot;select_notification&quot;),
-          ),
-
-          const SizedBox(
-            height: 20,
-          ),
-
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Internationalization.internationalization
-                .createLocalizedSemantics(
-              context,
-              &quot;time_configuration&quot;,
-              &quot;time_configuration&quot;,
-              &quot;time_configuration&quot;,
-              const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.lightVioletColor),
-            ),
-          ),
-
-          &#47;&#47; CONFIGURAR TIMER
-          SettingsContainer(
-            functionArrow: () {},
-            name: Internationalization.internationalization.getLocalizations(context, &quot;configure_timer&quot;),
-            icon: Icons.timer,
-            tooltip: Internationalization.internationalization.getLocalizations(context, &quot;configure_timer&quot;),
-          ),
-
-          const SizedBox(
-            height: 20,
-          ),
-
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Internationalization.internationalization
-                .createLocalizedSemantics(
-              context,
-              &quot;account&quot;,
-              &quot;account&quot;,
-              &quot;account&quot;,
-              const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.lightVioletColor),
-            ),
-          ),
-
-          &#47;&#47; PERFIL
-          SettingsContainer(
-            functionArrow: () {
-              ChangeScreen.changeScreen(const MyProfileScreen(), context);
-            }, &#47;&#47; CUANDO PULSE IRA A LA PANTALLA DE PERFIL
-            name: Internationalization.internationalization.getLocalizations(context, &quot;my_profile&quot;),
-            icon: Icons.person,
-            tooltip: Internationalization.internationalization.getLocalizations(context, &quot;my_profile&quot;),
-          ),
-
-          &#47;&#47; COLOCAMOS UN EXPANDED PARA OCUPAR EL ESPACIO RESSTANTE Y
-          &#47;&#47; COLOCAR EL GITHUB ABAJO DELTODO
-          Expanded(child: Container()),
-
-          &#47;&#47; GITHUB
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              IconClass.iconMaker(
-                  context, Icons.account_circle_sharp, &quot;github&quot;, 40),
-              TextButton(
-                  onPressed: () async {
-                    &#47;&#47; CUANDO PULSE IRA A MI GITHUB
-                    const url = &#39;https:&#47;&#47;github.com&#47;estelaV9&#39;;
-
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw &#39;No se pudo abrir la URL&#39;;
-                    } &#47;&#47; VERIFICA SI LA URL ES VALIDA
-                  },
-                  child: Internationalization.internationalization
-                      .createLocalizedSemantics(
-                    context,
-                    &quot;name_github&quot;,
-                    &quot;name_github&quot;,
-                    &quot;name_github&quot;,
-                    const TextStyle(
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Internationalization.internationalization
+                    .localizedTextOnlyKey(
+                  context,
+                  &quot;time_configuration&quot;,
+                  style: const TextStyle(
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: AppColors.darkPurpleColor,
-                      fontSize: 30,
-                    ),
-                  ))
+                      color: AppColors.lightVioletColor),
+                ),
+              ),
+
+              &#47;&#47; CONFIGURAR TIMER
+              SettingsContainer(
+                functionArrow: () {
+                  &#47;&#47; IR A LA PANTALLA DE NOTIFICACIONES
+                  ChangeScreen.changeScreen(const ConfigureTimerScreen(), context);
+                },
+                name: Internationalization.internationalization.getLocalizations(context, &quot;configure_timer&quot;),
+                icon: Icons.timer,
+                tooltip: Internationalization.internationalization.getLocalizations(context, &quot;configure_timer&quot;),
+              ),
+
+              const SizedBox(height: 10),
+
+              &#47;&#47; CONFIGURAR INSPECCION
+              SettingsContainer(
+                functionArrow: () {
+                  &#47;&#47; IR A LA PANTALLA DE CONFIGURAR INSPECCION
+                  ChangeScreen.changeScreen(const ConfigureInspectionScreen(), context);
+                },
+                name: Internationalization.internationalization.getLocalizations(context, &quot;inspection_title&quot;),
+                icon: Icons.hourglass_top_rounded,
+                tooltip: Internationalization.internationalization.getLocalizations(context, &quot;inspection_title&quot;),
+              ),
+
+              const SizedBox(height: 20),
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Internationalization.internationalization
+                    .localizedTextOnlyKey(
+                  context,
+                  &quot;account&quot;,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.lightVioletColor),
+                ),
+              ),
+
+              &#47;&#47; PERFIL
+              SettingsContainer(
+                functionArrow: () {
+                  ChangeScreen.changeScreen(const MyProfileScreen(), context);
+                }, &#47;&#47; CUANDO PULSE IRA A LA PANTALLA DE PERFIL
+                name: Internationalization.internationalization.getLocalizations(context, &quot;my_profile&quot;),
+                icon: Icons.person,
+                tooltip: Internationalization.internationalization.getLocalizations(context, &quot;my_profile&quot;),
+              ),
+
+              const SizedBox(height: 20),
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Internationalization.internationalization
+                    .localizedTextOnlyKey(
+                  context,
+                  &quot;advanced_options_title&quot;,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.lightVioletColor),
+                ),
+              ),
+
+              &#47;&#47; OPCIONES AVANZADAS
+              SettingsContainer(
+                functionArrow: () {
+                  &#47;&#47; IR A LA PANTALLA DE OPCIONES AVANZADAS
+                  ChangeScreen.changeScreen(const AdvancedOptionsScreen(), context);
+                },
+                name: Internationalization.internationalization
+                    .getLocalizations(context, &quot;advanced_options_title&quot;),
+                icon: Icons.tune,
+                tooltip: Internationalization.internationalization
+                    .getLocalizations(context, &quot;advanced_options_title&quot;),
+              ),
+
+              const SizedBox(height: 30),
+
+              &#47;&#47; GITHUB
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconClass.iconMaker(
+                      context, Icons.account_circle_sharp, &quot;github&quot;, 40),
+                  TextButton(
+                      onPressed: () async {
+                        &#47;&#47; CUANDO PULSE IRA A MI GITHUB
+                        const url = &#39;https:&#47;&#47;github.com&#47;estelaV9&#39;;
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw &#39;No se pudo abrir la URL&#39;;
+                        } &#47;&#47; VERIFICA SI LA URL ES VALIDA
+                      },
+                      child: Internationalization.internationalization
+                          .localizedTextOnlyKey(context, &quot;name_github&quot;,
+                              style: AppStyles.darkPurpleAndBold(30)))
+                ],
+              ),
             ],
-          ),
-        ],
-      ),
+          )),
     ),
   );
 }</code></pre>

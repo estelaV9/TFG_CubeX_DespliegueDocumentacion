@@ -57,9 +57,33 @@
 
     
 <section class="desc markdown">
-  <p>Pantalla que muestra el perfil del usuario.</p>
-<p>Esta pantalla permite ver y editar (no implementado) la información del usuario actual
-como el nombre de usuario, correo electrónico, contraseña, y eliminar la cuenta.</p>
+  <p>Pantalla de perfil del usuario.</p>
+<p>Esta pantalla permite visualizar y modificar los datos del usuario actual,
+como el nombre de usuario, la contraseña y la imagen de perfil.
+También proporciona la opción de eliminar la cuenta.</p>
+<h3 id="caractersticas">Características:</h3>
+<ul>
+<li><strong>Visualización y edición del perfil:</strong> Permite al usuario cambiar su nombre,
+contraseña e imagen de perfil.</li>
+<li><strong>Validaciones en los formularios:</strong> Se valida el nombre de usuario y la contraseña.</li>
+<li><strong>Confirmación antes de guardar cambios:</strong> Se requiere la contraseña actual
+para confirmar modificaciones.</li>
+<li><strong>Eliminación de cuenta:</strong> Se ofrece la opción de borrar el usuario de la base de datos.</li>
+</ul>
+<h3 id="mtodos-principales">Métodos principales:</h3>
+<ul>
+<li><code>_getImageUrl()</code>: Obtiene la URL de la imagen de perfil del usuario desde la base de datos.</li>
+<li><code>saveUser()</code>: Guarda los cambios realizados en la cuenta del usuario.</li>
+<li><code>deleteUser()</code>: Elimina la cuenta del usuario y lo redirige a la pantalla de inicio de sesión.</li>
+<li><code>_onWillPopScope()</code>: Controla la acción de retroceso para evitar la pérdida de cambios.</li>
+</ul>
+<h3 id="diseo">Diseño:</h3>
+<ul>
+<li><strong>Imagen de perfil:</strong> Se muestra como un <code>CircleAvatar</code> y permite cambiarla.</li>
+<li><strong>Campos de texto:</strong> Incluyen el nombre de usuario, la contraseña y la confirmación de contraseña.</li>
+<li><strong>Botón de guardar:</strong> Se encuentra en la parte superior derecha.</li>
+<li><strong>Botón de eliminar cuenta:</strong> Se muestra en la parte inferior.</li>
+</ul>
 </section>
 
 

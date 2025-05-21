@@ -62,7 +62,11 @@
 Al seleccionar una tarjeta, se muestra un cuadro de diálogo con los detalles del
 tiempo y la opción de eliminarlo o copiar el scramble con el que se realizó ese tiempo.</p>
 <p>El tiempo se elimina de la base de datos y se actualiza la vista con un mensaje de
-éxito o error.</p>
+éxito o error. Además, se implementa un sistema donde los usuarios pueden mantener
+presionado para seleccionar múltiples tiempos y eliminarlos directamente con el
+botón flotante que aparece. Si el usuario quiere eliminar un tiempo de la selección
+solo deberá pulsar la 'x' que aparece cuando se presiona un tiempo.</p>
+<p>Se asegura que esté montado (<code>mounted</code>) antes de ejecutar <code>setState</code> o acciones con contexto.</p>
 </section>
 
 

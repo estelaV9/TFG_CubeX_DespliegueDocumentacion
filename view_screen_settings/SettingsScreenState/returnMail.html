@@ -77,13 +77,15 @@ y lo actualiza en la interfaz.</p>
   <pre class="language-dart"><code class="language-dart">void returnMail() async {
   &#47;&#47; OBTENEMOS LOS DATOS DEL USUARIO
   final currentUser = context.read&lt;CurrentUser&gt;().user;
-  String result = await userDao.getMailUserFromName(currentUser!.username);
-  setState(() {
-    mail = result;
-  });
-  if (mail == &quot;&quot;) {
-    DatabaseHelper.logger.e(&quot;El mail es nulo. Mail: $mail&quot;);
-  } &#47;&#47; SI EL MAIL ES &quot;&quot;, MUESTRA UN AVISO
+  String? result = await userDaoSb.getMailUserFromName(currentUser!.username);
+  if (result != null) {
+    setState(() {
+      mail = result;
+    });
+    if (mail == &quot;&quot;) {
+      DatabaseHelper.logger.e(&quot;El mail es nulo. Mail: $mail&quot;);
+    } &#47;&#47; SI EL MAIL ES &quot;&quot;, MUESTRA UN AVISO
+  }
 }</code></pre>
 </section>
 

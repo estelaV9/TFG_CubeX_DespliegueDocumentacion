@@ -73,13 +73,14 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void updateScramble() {
+  <pre class="language-dart"><code class="language-dart">void updateScramble() async {
+  String newScramble = await _generator();  &#47;&#47; SE ASIGNA UN NUEVO SCRAMBLE
   setState(() {
-    scrambleName = scramble.generateScramble(random);  &#47;&#47; SE ASIGNA UN NUEVO SCRAMBLE
-    &#47;&#47; ESTABLECEMOS EL SCRAMBLE ACTUAL
-    final currentScramble = Provider.of&lt;CurrentScramble&gt;(this.context, listen: false);
-    currentScramble.setScramble(scrambleName);
+    scrambleName = newScramble;
   });
+  &#47;&#47; ESTABLECEMOS EL SCRAMBLE ACTUAL
+  final currentScramble = Provider.of&lt;CurrentScramble&gt;(context, listen: false);
+  currentScramble.setScramble(scrambleName);
 }</code></pre>
 </section>
 

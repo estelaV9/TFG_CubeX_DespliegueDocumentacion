@@ -47,27 +47,75 @@
       
 <section class="desc markdown">
   <h1 id="cubex---tfg">CubeX - TFG</h1>
-<p><strong>CubeX</strong> es un proyecto desarrollado como Trabajo Fin de Grado (TFG) que consiste en una aplicación para cronometrar
-cubos de Rubik. Actualmente, se trata de una aplicación que permite a los usuarios cronometrar sus tiempos al
-resolver cubos de Rubik. Más adelante se incorporará más características y funcionalidades.</p>
+<p><strong>CubeX</strong> es una aplicación multiplataforma desarrollada como parte del Trabajo de Fin de Grado (TFG).
+Su objetivo es ofrecer una herramienta profesional para el entrenamiento y seguimiento de tiempos en la resolución
+de cubos de Rubik, adaptada tanto a principiantes como a usuarios avanzados.</p>
 <hr>
-<h2 id="caractersticas-principales"><strong>Características principales</strong></h2>
+<h2 id="descripcin-general">Descripción general</h2>
+<p>Esta aplicación está pensada para speedcubers que desean registrar, analizar y mejorar sus tiempos de resolución.
+Integra un cronómetro preciso, generación automática de scrambles válidos según el tipo de cubo (3x3, Skewb, Megaminx, etc.),
+gestión de penalizaciones, estadísticas visuales y exportación de datos. Además de ofrecer diferentes opciones para mejorar
+la experiencia del usuario, tanto personalizando los elementos de la aplicación como implementando funcionalidades de
+internacionalización, ofreciendo dos idiomas (español, inglés), y funcionalidades de accesibilidad.</p>
+<p>Durante su desarrollo, se han abordado aspectos clave como:</p>
 <ul>
-<li><strong>Timer</strong>: Permite cronometrar tiempos.</li>
-<li><strong>Estadísticas</strong>: Visualiza tus mejores tiempos, promedio, y más.</li>
-<li><strong>Base de datos integrada</strong>: Guarda y consulta tus tiempos pasados.</li>
+<li><strong>Generación aleatoria de scrambles</strong> según reglas específicas.</li>
+<li>Diseño de una interfaz <strong>adaptable</strong> y <strong>accesible</strong>.</li>
+<li>Persistencia de datos mediante <strong>Supabase</strong> (base de datos en la nube).</li>
+<li><strong>Autenticación</strong> con confirmación por correo electrónico.</li>
+<li><strong>Gráficas</strong> de evolución para seguimiento de progreso diario, mensual y anual.</li>
 </ul>
-<h2 id="tecnologas-utilizadas"><strong>Tecnologías utilizadas</strong></h2>
+<hr>
+<h2 id="objetivos-del-proyecto">Objetivos del proyecto</h2>
+<h3 id="objetivos-principales">Objetivos principales</h3>
 <ul>
-<li><strong>Flutter</strong>: Framework de desarrollo para aplicaciones móviles.</li>
-<li><strong>Dart</strong>: Lenguaje de programación utilizado en el desarrollo de la aplicación.</li>
-<li><strong>SQLite</strong>: Para almacenamiento local de los datos.</li>
+<li><strong>Desarrollar un temporizador avanzado</strong> con gestión de penalizaciones, scrambles aleatorios y estadísticas.</li>
+<li><strong>Aplicar conocimientos técnicos adquiridos</strong>: desarrollo multiplataforma, bases de datos y autenticación.</li>
+<li><strong>Crear una aplicación estable y funcional</strong> en distintas plataformas.</li>
 </ul>
+<h3 id="objetivos-secundarios">Objetivos secundarios</h3>
+<ul>
+<li><strong>Diseñar una interfaz atractiva e intuitiva</strong>, visualmente bonita y accesible para todos los perfiles de usuario.</li>
+<li><strong>Facilitar el seguimiento del progreso</strong>, mediante gráficas evolutivas y estadísticas detalladas.</li>
+</ul>
+<hr>
+<h2 id="funcionalidades-principales">Funcionalidades principales</h2>
+<ul>
+<li><strong>Gestión completa</strong> de tiempos de resolución (añadir, eliminar, editar).</li>
+<li><strong>Penalizaciones</strong> personalizadas: +2, DNF, sin penalización.</li>
+<li><strong>Búsquedas</strong> por tiempo o comentarios.</li>
+<li><strong>Gestión de tipos de cubo y sesiones</strong> independientes.</li>
+<li><strong>Generación automática de scrambles</strong> según el tipo de cubo.</li>
+<li><strong>Exportación</strong> de sesiones en <strong>PDF</strong> y opción de compartir desde la app.</li>
+<li><strong>Registro de usuarios</strong> y login con verificación por email.</li>
+<li>Edición y <strong>personalización del perfil</strong> del usuario.</li>
+<li><strong>Estadísticas</strong> visuales por sesión (PB, medias, penalizaciones, tiempo total, etc.).</li>
+<li><strong>Opciones avanzadas</strong>: sonidos, vibraciones, inspección, visibilidad, etc.</li>
+<li><strong>Notificaciones diarias</strong>.</li>
+</ul>
+<hr>
+<h2 id="tecnologas-utilizadas">Tecnologías utilizadas</h2>
+<ul>
+<li><strong>Flutter</strong> y <strong>Dart</strong>: para el desarrollo de la app multiplataforma (Android, iOS, Windows, macOS, Linux).</li>
+<li><strong>Supabase</strong>: como backend para base de datos, autenticación y almacenamiento.</li>
+<li><strong>Figma</strong>: para el diseño visual y prototipado de la interfaz.</li>
+<li><strong>Git</strong> y <strong>GitHub</strong>: control de versiones y gestión del proyecto (GitHub Projects).</li>
+<li><strong>IntelliJ IDEA</strong>: como entorno de desarrollo principal.</li>
+</ul>
+<hr>
+<h2 id="documentacin">Documentación</h2>
+<ul>
+<li><a href="https://github.com/estelaV9/TFG_CubeX/blob/master/deVega_Martin_Estela_Memoria_ProyectoFinal_DAM25.pdf">Documento de la memoria</a></li>
+<li><a href="https://github.com/estelaV9/TFG_CubeX/blob/master/deVega_Martin_Estela_Manual_Usuario_ProyectoFinal_DAM25.pdf">Manual de usuario</a></li>
+<li><a href="https://estelav9.github.io/TFG_CubeX_DespliegueDocumentacion/">Documentación técnica del proyecto</a></li>
+</ul>
+<hr>
 <h2 id="-licencia">📜 Licencia</h2>
-<p>©Copyright 202024/2025 Estela de Vega Martín</p>
-<p>Este proyecto se encuentra bajo la licencia Copyright 2024/2025, y está protegido por los derechos de autor. El acceso
+<p>© 2024/2025 Estela de Vega Martín<br>
+Este proyecto se encuentra bajo la licencia Copyright 2024/2025, y está protegido por los derechos de autor. El acceso
 es público para su revisión, pero no se permite la modificación ni redistribución sin permiso expreso.</p>
 <hr>
+<p>Proyecto final desarrollado como última parte del ciclo formativo de grado superior en desarrollo de aplicaciones multiplataforma (DAM).</p>
 <blockquote>
 <p><em>Estela de Vega Martín | IES Ribera de Castilla</em></p>
 </blockquote>
@@ -86,6 +134,34 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 
           <dt id="session_dao">
   <span class="name"><a href="data_dao_session_dao/data_dao_session_dao-library.html">data\dao\session_dao</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="cubetype_dao_sb">
+  <span class="name"><a href="data_dao_supebase_cubetype_dao_sb/data_dao_supebase_cubetype_dao_sb-library.html">data\dao\supebase\cubetype_dao_sb</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="session_dao_sb">
+  <span class="name"><a href="data_dao_supebase_session_dao_sb/data_dao_supebase_session_dao_sb-library.html">data\dao\supebase\session_dao_sb</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="time_training_dao_sb">
+  <span class="name"><a href="data_dao_supebase_time_training_dao_sb/data_dao_supebase_time_training_dao_sb-library.html">data\dao\supebase\time_training_dao_sb</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="user_dao_sb">
+  <span class="name"><a href="data_dao_supebase_user_dao_sb/data_dao_supebase_user_dao_sb-library.html">data\dao\supebase\user_dao_sb</a></span> 
 
 </dt>
 <dd>
@@ -112,8 +188,29 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 <dd>
 </dd>
 
+          <dt id="supabase_helper">
+  <span class="name"><a href="data_database_supabase_helper/data_database_supabase_helper-library.html">data\database\supabase_helper</a></span> 
+
+</dt>
+<dd>
+</dd>
+
           <dt id="main">
   <span class="name"><a href="main/main-library.html">main</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="app_notification">
+  <span class="name"><a href="model_app_notification/model_app_notification-library.html">model\app_notification</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="configuration_timer">
+  <span class="name"><a href="model_configuration_timer/model_configuration_timer-library.html">model\configuration_timer</a></span> 
 
 </dt>
 <dd>
@@ -126,8 +223,43 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 <dd>
 </dd>
 
+          <dt id="gallery_service">
+  <span class="name"><a href="model_gallery_service/model_gallery_service-library.html">model\gallery_service</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="notification_service">
+  <span class="name"><a href="model_notification_service/model_notification_service-library.html">model\notification_service</a></span> 
+
+</dt>
+<dd>
+</dd>
+
           <dt id="session">
   <span class="name"><a href="model_session/model_session-library.html">model\session</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="guide_step">
+  <span class="name"><a href="model_start_guide_guide_step/model_start_guide_guide_step-library.html">model\start_guide\guide_step</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="highlight_position">
+  <span class="name"><a href="model_start_guide_highlight_position/model_start_guide_highlight_position-library.html">model\start_guide\highlight_position</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="mascot_position">
+  <span class="name"><a href="model_start_guide_mascot_position/model_start_guide_mascot_position-library.html">model\start_guide\mascot_position</a></span> 
 
 </dt>
 <dd>
@@ -142,6 +274,13 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 
           <dt id="user">
   <span class="name"><a href="model_user/model_user-library.html">model\user</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="appbar_class">
+  <span class="name"><a href="view_components_appbar_class/view_components_appbar_class-library.html">view\components\appbar_class</a></span> 
 
 </dt>
 <dd>
@@ -168,6 +307,13 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 <dd>
 </dd>
 
+          <dt id="double_tap_exit_dialog">
+  <span class="name"><a href="view_components_double_tap_exit_dialog/view_components_double_tap_exit_dialog-library.html">view\components\double_tap_exit_dialog</a></span> 
+
+</dt>
+<dd>
+</dd>
+
           <dt id="animated_icon">
   <span class="name"><a href="view_components_Icon_animated_icon/view_components_Icon_animated_icon-library.html">view\components\Icon\animated_icon</a></span> 
 
@@ -184,6 +330,13 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 
           <dt id="icon_image_fieldrow">
   <span class="name"><a href="view_components_icon_image_fieldrow/view_components_icon_image_fieldrow-library.html">view\components\icon_image_fieldrow</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="menu_item">
+  <span class="name"><a href="view_components_menu_item/view_components_menu_item-library.html">view\components\menu_item</a></span> 
 
 </dt>
 <dd>
@@ -224,6 +377,90 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 <dd>
 </dd>
 
+          <dt id="option_switch_tile">
+  <span class="name"><a href="view_components_settings_option_option_switch_tile/view_components_settings_option_option_switch_tile-library.html">view\components\settings_option\option_switch_tile</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="start_guide_component">
+  <span class="name"><a href="view_components_start_guide_start_guide_component/view_components_start_guide_start_guide_component-library.html">view\components\start_guide\start_guide_component</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="average_analysis_container">
+  <span class="name"><a href="view_components_statistics_average_analysis_container/view_components_statistics_average_analysis_container-library.html">view\components\statistics\average_analysis_container</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="general_statistics_container">
+  <span class="name"><a href="view_components_statistics_general_statistics_container/view_components_statistics_general_statistics_container-library.html">view\components\statistics\general_statistics_container</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="graphic_performance_container">
+  <span class="name"><a href="view_components_statistics_graphic_performance_container/view_components_statistics_graphic_performance_container-library.html">view\components\statistics\graphic_performance_container</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="animated_tooltip">
+  <span class="name"><a href="view_components_tooltip_animated_tooltip/view_components_tooltip_animated_tooltip-library.html">view\components\tooltip\animated_tooltip</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="tooltip_suggestion">
+  <span class="name"><a href="view_components_tooltip_tooltip_suggestion/view_components_tooltip_tooltip_suggestion-library.html">view\components\tooltip\tooltip_suggestion</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="triangle_painter">
+  <span class="name"><a href="view_components_tooltip_triangle_painter/view_components_tooltip_triangle_painter-library.html">view\components\tooltip\triangle_painter</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="alert_record_wave">
+  <span class="name"><a href="view_components_waves_painter_alert_record_wave/view_components_waves_painter_alert_record_wave-library.html">view\components\waves_painter\alert_record_wave</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="drawer_wave">
+  <span class="name"><a href="view_components_waves_painter_drawer_wave/view_components_waves_painter_drawer_wave-library.html">view\components\waves_painter\drawer_wave</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="small_wave_container_painter">
+  <span class="name"><a href="view_components_waves_painter_small_wave_container_painter/view_components_waves_painter_small_wave_container_painter-library.html">view\components\waves_painter\small_wave_container_painter</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="wave_container_painter">
+  <span class="name"><a href="view_components_waves_painter_wave_container_painter/view_components_waves_painter_wave_container_painter-library.html">view\components\waves_painter\wave_container_painter</a></span> 
+
+</dt>
+<dd>
+</dd>
+
           <dt id="app_drawer">
   <span class="name"><a href="view_navigation_app_drawer/view_navigation_app_drawer-library.html">view\navigation\app_drawer</a></span> 
 
@@ -252,6 +489,13 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 <dd>
 </dd>
 
+          <dt id="intro_screen">
+  <span class="name"><a href="view_screen_intro_screen/view_screen_intro_screen-library.html">view\screen\intro_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
           <dt id="login_screen">
   <span class="name"><a href="view_screen_login_screen/view_screen_login_screen-library.html">view\screen\login_screen</a></span> 
 
@@ -273,6 +517,48 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 <dd>
 </dd>
 
+          <dt id="advanced_options_screen">
+  <span class="name"><a href="view_screen_settings_options_advanced_options_screen/view_screen_settings_options_advanced_options_screen-library.html">view\screen\settings_options\advanced_options_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="configure_inspection_screen">
+  <span class="name"><a href="view_screen_settings_options_configure_inspection_screen/view_screen_settings_options_configure_inspection_screen-library.html">view\screen\settings_options\configure_inspection_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="configure_timer_screen">
+  <span class="name"><a href="view_screen_settings_options_configure_timer_screen/view_screen_settings_options_configure_timer_screen-library.html">view\screen\settings_options\configure_timer_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="manage_disabled_notification_screen">
+  <span class="name"><a href="view_screen_settings_options_manage_disabled_notification_screen/view_screen_settings_options_manage_disabled_notification_screen-library.html">view\screen\settings_options\manage_disabled_notification_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="manage_notification_screen">
+  <span class="name"><a href="view_screen_settings_options_manage_notification_screen/view_screen_settings_options_manage_notification_screen-library.html">view\screen\settings_options\manage_notification_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="notification_screen">
+  <span class="name"><a href="view_screen_settings_options_notification_screen/view_screen_settings_options_notification_screen-library.html">view\screen\settings_options\notification_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
           <dt id="show_time_screen">
   <span class="name"><a href="view_screen_show_time_screen/view_screen_show_time_screen-library.html">view\screen\show_time_screen</a></span> 
 
@@ -282,6 +568,13 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 
           <dt id="signup_screen">
   <span class="name"><a href="view_screen_signup_screen/view_screen_signup_screen-library.html">view\screen\signup_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="statistics_screen">
+  <span class="name"><a href="view_screen_statistics_screen/view_screen_statistics_screen-library.html">view\screen\statistics_screen</a></span> 
 
 </dt>
 <dd>
@@ -308,6 +601,13 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 <dd>
 </dd>
 
+          <dt id="app_styles">
+  <span class="name"><a href="view_utilities_app_styles/view_utilities_app_styles-library.html">view\utilities\app_styles</a></span> 
+
+</dt>
+<dd>
+</dd>
+
           <dt id="change_screen">
   <span class="name"><a href="view_utilities_change_screen/view_utilities_change_screen-library.html">view\utilities\change_screen</a></span> 
 
@@ -329,8 +629,15 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 <dd>
 </dd>
 
-          <dt id="ScrambleGenerator">
-  <span class="name"><a href="view_utilities_ScrambleGenerator/view_utilities_ScrambleGenerator-library.html">view\utilities\ScrambleGenerator</a></span> 
+          <dt id="pdf_generator">
+  <span class="name"><a href="view_utilities_pdf_generator/view_utilities_pdf_generator-library.html">view\utilities\pdf_generator</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="scramble_generator">
+  <span class="name"><a href="view_utilities_scramble_generator/view_utilities_scramble_generator-library.html">view\utilities\scramble_generator</a></span> 
 
 </dt>
 <dd>
@@ -345,13 +652,6 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 
           <dt id="current_cube_type">
   <span class="name"><a href="viewmodel_current_cube_type/viewmodel_current_cube_type-library.html">viewmodel\current_cube_type</a></span> 
-
-</dt>
-<dd>
-</dd>
-
-          <dt id="current_language">
-  <span class="name"><a href="viewmodel_current_language/viewmodel_current_language-library.html">viewmodel\current_language</a></span> 
 
 </dt>
 <dd>
@@ -378,8 +678,43 @@ es público para su revisión, pero no se permite la modificación ni redistribu
 <dd>
 </dd>
 
+          <dt id="current_time">
+  <span class="name"><a href="viewmodel_current_time/viewmodel_current_time-library.html">viewmodel\current_time</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="current_usage_timer">
+  <span class="name"><a href="viewmodel_current_usage_timer/viewmodel_current_usage_timer-library.html">viewmodel\current_usage_timer</a></span> 
+
+</dt>
+<dd>
+</dd>
+
           <dt id="current_user">
   <span class="name"><a href="viewmodel_current_user/viewmodel_current_user-library.html">viewmodel\current_user</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="current_configure_timer">
+  <span class="name"><a href="viewmodel_settings_option_current_configure_timer/viewmodel_settings_option_current_configure_timer-library.html">viewmodel\settings_option\current_configure_timer</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="current_language">
+  <span class="name"><a href="viewmodel_settings_option_current_language/viewmodel_settings_option_current_language-library.html">viewmodel\settings_option\current_language</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="current_notifications">
+  <span class="name"><a href="viewmodel_settings_option_current_notifications/viewmodel_settings_option_current_notifications-library.html">viewmodel\settings_option\current_notifications</a></span> 
 
 </dt>
 <dd>
@@ -404,48 +739,89 @@ es público para su revisión, pero no se permite la modificación ni redistribu
       <li class="section-title">Libraries</li>
       <li><a href="data_dao_cubetype_dao/data_dao_cubetype_dao-library.html">data\dao\cubetype_dao</a></li>
       <li><a href="data_dao_session_dao/data_dao_session_dao-library.html">data\dao\session_dao</a></li>
+      <li><a href="data_dao_supebase_cubetype_dao_sb/data_dao_supebase_cubetype_dao_sb-library.html">data\dao\supebase\cubetype_dao_sb</a></li>
+      <li><a href="data_dao_supebase_session_dao_sb/data_dao_supebase_session_dao_sb-library.html">data\dao\supebase\session_dao_sb</a></li>
+      <li><a href="data_dao_supebase_time_training_dao_sb/data_dao_supebase_time_training_dao_sb-library.html">data\dao\supebase\time_training_dao_sb</a></li>
+      <li><a href="data_dao_supebase_user_dao_sb/data_dao_supebase_user_dao_sb-library.html">data\dao\supebase\user_dao_sb</a></li>
       <li><a href="data_dao_time_training_dao/data_dao_time_training_dao-library.html">data\dao\time_training_dao</a></li>
       <li><a href="data_dao_user_dao/data_dao_user_dao-library.html">data\dao\user_dao</a></li>
       <li><a href="data_database_database_helper/data_database_database_helper-library.html">data\database\database_helper</a></li>
+      <li><a href="data_database_supabase_helper/data_database_supabase_helper-library.html">data\database\supabase_helper</a></li>
       <li><a href="main/main-library.html">main</a></li>
+      <li><a href="model_app_notification/model_app_notification-library.html">model\app_notification</a></li>
+      <li><a href="model_configuration_timer/model_configuration_timer-library.html">model\configuration_timer</a></li>
       <li><a href="model_cubetype/model_cubetype-library.html">model\cubetype</a></li>
+      <li><a href="model_gallery_service/model_gallery_service-library.html">model\gallery_service</a></li>
+      <li><a href="model_notification_service/model_notification_service-library.html">model\notification_service</a></li>
       <li><a href="model_session/model_session-library.html">model\session</a></li>
+      <li><a href="model_start_guide_guide_step/model_start_guide_guide_step-library.html">model\start_guide\guide_step</a></li>
+      <li><a href="model_start_guide_highlight_position/model_start_guide_highlight_position-library.html">model\start_guide\highlight_position</a></li>
+      <li><a href="model_start_guide_mascot_position/model_start_guide_mascot_position-library.html">model\start_guide\mascot_position</a></li>
       <li><a href="model_time_training/model_time_training-library.html">model\time_training</a></li>
       <li><a href="model_user/model_user-library.html">model\user</a></li>
+      <li><a href="view_components_appbar_class/view_components_appbar_class-library.html">view\components\appbar_class</a></li>
       <li><a href="view_components_card_time_historial/view_components_card_time_historial-library.html">view\components\card_time_historial</a></li>
       <li><a href="view_components_cube_header_container/view_components_cube_header_container-library.html">view\components\cube_header_container</a></li>
       <li><a href="view_components_cube_type_menu/view_components_cube_type_menu-library.html">view\components\cube_type_menu</a></li>
+      <li><a href="view_components_double_tap_exit_dialog/view_components_double_tap_exit_dialog-library.html">view\components\double_tap_exit_dialog</a></li>
       <li><a href="view_components_Icon_animated_icon/view_components_Icon_animated_icon-library.html">view\components\Icon\animated_icon</a></li>
       <li><a href="view_components_Icon_icon/view_components_Icon_icon-library.html">view\components\Icon\icon</a></li>
       <li><a href="view_components_icon_image_fieldrow/view_components_icon_image_fieldrow-library.html">view\components\icon_image_fieldrow</a></li>
+      <li><a href="view_components_menu_item/view_components_menu_item-library.html">view\components\menu_item</a></li>
       <li><a href="view_components_password_field_row/view_components_password_field_row-library.html">view\components\password_field_row</a></li>
       <li><a href="view_components_scramble_container/view_components_scramble_container-library.html">view\components\scramble_container</a></li>
       <li><a href="view_components_search_time_container/view_components_search_time_container-library.html">view\components\search_time_container</a></li>
       <li><a href="view_components_session_menu/view_components_session_menu-library.html">view\components\session_menu</a></li>
       <li><a href="view_components_settings_container/view_components_settings_container-library.html">view\components\settings_container</a></li>
+      <li><a href="view_components_settings_option_option_switch_tile/view_components_settings_option_option_switch_tile-library.html">view\components\settings_option\option_switch_tile</a></li>
+      <li><a href="view_components_start_guide_start_guide_component/view_components_start_guide_start_guide_component-library.html">view\components\start_guide\start_guide_component</a></li>
+      <li><a href="view_components_statistics_average_analysis_container/view_components_statistics_average_analysis_container-library.html">view\components\statistics\average_analysis_container</a></li>
+      <li><a href="view_components_statistics_general_statistics_container/view_components_statistics_general_statistics_container-library.html">view\components\statistics\general_statistics_container</a></li>
+      <li><a href="view_components_statistics_graphic_performance_container/view_components_statistics_graphic_performance_container-library.html">view\components\statistics\graphic_performance_container</a></li>
+      <li><a href="view_components_tooltip_animated_tooltip/view_components_tooltip_animated_tooltip-library.html">view\components\tooltip\animated_tooltip</a></li>
+      <li><a href="view_components_tooltip_tooltip_suggestion/view_components_tooltip_tooltip_suggestion-library.html">view\components\tooltip\tooltip_suggestion</a></li>
+      <li><a href="view_components_tooltip_triangle_painter/view_components_tooltip_triangle_painter-library.html">view\components\tooltip\triangle_painter</a></li>
+      <li><a href="view_components_waves_painter_alert_record_wave/view_components_waves_painter_alert_record_wave-library.html">view\components\waves_painter\alert_record_wave</a></li>
+      <li><a href="view_components_waves_painter_drawer_wave/view_components_waves_painter_drawer_wave-library.html">view\components\waves_painter\drawer_wave</a></li>
+      <li><a href="view_components_waves_painter_small_wave_container_painter/view_components_waves_painter_small_wave_container_painter-library.html">view\components\waves_painter\small_wave_container_painter</a></li>
+      <li><a href="view_components_waves_painter_wave_container_painter/view_components_waves_painter_wave_container_painter-library.html">view\components\waves_painter\wave_container_painter</a></li>
       <li><a href="view_navigation_app_drawer/view_navigation_app_drawer-library.html">view\navigation\app_drawer</a></li>
       <li><a href="view_navigation_bottom_navigation/view_navigation_bottom_navigation-library.html">view\navigation\bottom_navigation</a></li>
       <li><a href="view_screen_about_app_screen/view_screen_about_app_screen-library.html">view\screen\about_app_screen</a></li>
       <li><a href="view_screen_historial_screen/view_screen_historial_screen-library.html">view\screen\historial_screen</a></li>
+      <li><a href="view_screen_intro_screen/view_screen_intro_screen-library.html">view\screen\intro_screen</a></li>
       <li><a href="view_screen_login_screen/view_screen_login_screen-library.html">view\screen\login_screen</a></li>
       <li><a href="view_screen_my_profile_screen/view_screen_my_profile_screen-library.html">view\screen\my_profile_screen</a></li>
       <li><a href="view_screen_settings/view_screen_settings-library.html">view\screen\settings</a></li>
+      <li><a href="view_screen_settings_options_advanced_options_screen/view_screen_settings_options_advanced_options_screen-library.html">view\screen\settings_options\advanced_options_screen</a></li>
+      <li><a href="view_screen_settings_options_configure_inspection_screen/view_screen_settings_options_configure_inspection_screen-library.html">view\screen\settings_options\configure_inspection_screen</a></li>
+      <li><a href="view_screen_settings_options_configure_timer_screen/view_screen_settings_options_configure_timer_screen-library.html">view\screen\settings_options\configure_timer_screen</a></li>
+      <li><a href="view_screen_settings_options_manage_disabled_notification_screen/view_screen_settings_options_manage_disabled_notification_screen-library.html">view\screen\settings_options\manage_disabled_notification_screen</a></li>
+      <li><a href="view_screen_settings_options_manage_notification_screen/view_screen_settings_options_manage_notification_screen-library.html">view\screen\settings_options\manage_notification_screen</a></li>
+      <li><a href="view_screen_settings_options_notification_screen/view_screen_settings_options_notification_screen-library.html">view\screen\settings_options\notification_screen</a></li>
       <li><a href="view_screen_show_time_screen/view_screen_show_time_screen-library.html">view\screen\show_time_screen</a></li>
       <li><a href="view_screen_signup_screen/view_screen_signup_screen-library.html">view\screen\signup_screen</a></li>
+      <li><a href="view_screen_statistics_screen/view_screen_statistics_screen-library.html">view\screen\statistics_screen</a></li>
       <li><a href="view_screen_timer_screen/view_screen_timer_screen-library.html">view\screen\timer_screen</a></li>
       <li><a href="view_utilities_alert/view_utilities_alert-library.html">view\utilities\alert</a></li>
       <li><a href="view_utilities_app_color/view_utilities_app_color-library.html">view\utilities\app_color</a></li>
+      <li><a href="view_utilities_app_styles/view_utilities_app_styles-library.html">view\utilities\app_styles</a></li>
       <li><a href="view_utilities_change_screen/view_utilities_change_screen-library.html">view\utilities\change_screen</a></li>
       <li><a href="view_utilities_encrypt_password/view_utilities_encrypt_password-library.html">view\utilities\encrypt_password</a></li>
       <li><a href="view_utilities_internationalization/view_utilities_internationalization-library.html">view\utilities\internationalization</a></li>
-      <li><a href="view_utilities_ScrambleGenerator/view_utilities_ScrambleGenerator-library.html">view\utilities\ScrambleGenerator</a></li>
+      <li><a href="view_utilities_pdf_generator/view_utilities_pdf_generator-library.html">view\utilities\pdf_generator</a></li>
+      <li><a href="view_utilities_scramble_generator/view_utilities_scramble_generator-library.html">view\utilities\scramble_generator</a></li>
       <li><a href="view_utilities_validator/view_utilities_validator-library.html">view\utilities\validator</a></li>
       <li><a href="viewmodel_current_cube_type/viewmodel_current_cube_type-library.html">viewmodel\current_cube_type</a></li>
-      <li><a href="viewmodel_current_language/viewmodel_current_language-library.html">viewmodel\current_language</a></li>
       <li><a href="viewmodel_current_scramble/viewmodel_current_scramble-library.html">viewmodel\current_scramble</a></li>
       <li><a href="viewmodel_current_session/viewmodel_current_session-library.html">viewmodel\current_session</a></li>
       <li><a href="viewmodel_current_statistics/viewmodel_current_statistics-library.html">viewmodel\current_statistics</a></li>
+      <li><a href="viewmodel_current_time/viewmodel_current_time-library.html">viewmodel\current_time</a></li>
+      <li><a href="viewmodel_current_usage_timer/viewmodel_current_usage_timer-library.html">viewmodel\current_usage_timer</a></li>
       <li><a href="viewmodel_current_user/viewmodel_current_user-library.html">viewmodel\current_user</a></li>
+      <li><a href="viewmodel_settings_option_current_configure_timer/viewmodel_settings_option_current_configure_timer-library.html">viewmodel\settings_option\current_configure_timer</a></li>
+      <li><a href="viewmodel_settings_option_current_language/viewmodel_settings_option_current_language-library.html">viewmodel\settings_option\current_language</a></li>
+      <li><a href="viewmodel_settings_option_current_notifications/viewmodel_settings_option_current_notifications-library.html">viewmodel\settings_option\current_notifications</a></li>
 </ol>
 
   </div>

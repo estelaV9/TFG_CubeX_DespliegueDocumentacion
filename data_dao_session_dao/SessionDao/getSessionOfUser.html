@@ -57,7 +57,7 @@
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../model_session/Session-class.html">Session</a></span>&gt;</span></span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../model_session/SessionClass-class.html">SessionClass</a></span>&gt;</span></span>&gt;</span></span>
 <span class="name ">getSessionOfUser</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="getSessionOfUser-param-idName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idName</span></span></li>
 </ol>)
 
@@ -75,7 +75,7 @@ a ese usuario desde la base de datos.</p>
 </ul>
 <p>Retorna:</p>
 <ul>
-<li><code>List&lt;Session&gt;</code>: Lista de sesiones asociadas al usuario.</li>
+<li><code>List&lt;SessionClass&gt;</code>: Lista de sesiones asociadas al usuario.</li>
 </ul>
 </section>
 
@@ -83,9 +83,9 @@ a ese usuario desde la base de datos.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;Session&gt;&gt; getSessionOfUser(int idName) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;SessionClass&gt;&gt; getSessionOfUser(int idName) async {
   final db = await DatabaseHelper.database;
-  List&lt;Session&gt; sessionError = [];
+  List&lt;SessionClass&gt; sessionError = [];
   try {
     final sessions = await db.query(
         &#39;sessionTime&#39;,
@@ -95,7 +95,7 @@ a ese usuario desde la base de datos.</p>
 
     if (sessions.isNotEmpty) {
       return sessions.map((session) {
-        return Session(
+        return SessionClass(
           idUser: session[&#39;idUser&#39;] as int,
           sessionName: session[&#39;sessionName&#39;] as String,
           idCubeType: session[&#39;idCubeType&#39;] as int,

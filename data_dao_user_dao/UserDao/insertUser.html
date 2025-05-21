@@ -58,7 +58,7 @@
     <section class="multi-line-signature">
       
 <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
-<span class="name ">insertUser</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="insertUser-param-user"><span class="type-annotation"><a href="../../model_user/User-class.html">User</a></span> <span class="parameter-name">user</span></span></li>
+<span class="name ">insertUser</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="insertUser-param-user"><span class="type-annotation"><a href="../../model_user/UserClass-class.html">UserClass</a></span> <span class="parameter-name">user</span></span></li>
 </ol>)
 
       
@@ -70,7 +70,7 @@
 <p>Inserta un nuevo usuario con la información proporcionada en la tabla 'user'.</p>
 <p>Parámetros:</p>
 <ul>
-<li><code>user</code>: El objeto <a href="../../model_user/User-class.html">User</a> que contiene la información del nuevo usuario.</li>
+<li><code>user</code>: El objeto <a href="https://pub.dev/documentation/gotrue/2.12.0/gotrue/User-class.html">User</a> que contiene la información del nuevo usuario.</li>
 </ul>
 <p>Retorna:</p>
 <ul>
@@ -82,7 +82,7 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; insertUser(User user) async {
+  <pre class="language-dart"><code class="language-dart">Future&lt;bool&gt; insertUser(UserClass user) async {
   final db = await DatabaseHelper.database;
   try {
     await db.insert(&#39;user&#39;, {

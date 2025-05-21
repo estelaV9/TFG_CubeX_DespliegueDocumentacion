@@ -81,17 +81,44 @@ el estado global de la aplicación.</p>
   &#47;&#47; SE INICIALIZA LA BASE DE DATOS Y SE CONFIGURA LAS PREFERENCIAS
   await DatabaseHelper.initDatabase();
   await SettingsScreenState.startPreferences();
+  await AppNotification.startPreferences();
+  await ConfigurationTimer.startPreferences();
+  await UserClass.startPreferences();
+
+  &#47;&#47; INICIALIZAR EL TIMEZONES
+  tz.initializeTimeZones();
+
+  &#47;&#47; SE INICIALIZAN LAS NOTIFICACIONES DONDE TE PIDE LOS PERMISOS
+  await NotificationService.initNotification();
+
+  &#47;&#47; QUITA EL STATUS BAR EN EL MOVIL
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+  &#47;&#47; CARGAMOS EL ARCHIVO .env
+  await dotenv.load(fileName: &quot;.env&quot;);
+
+  &#47;&#47; INICIALIZAMOS Supabase CON LAS VARIABLES DE ENTORNO
+  await Supabase.initialize(
+    url: dotenv.env[&#39;SUPABASE_URL&#39;]!,
+    anonKey: dotenv.env[&#39;SUPABASE_ANON_KEY&#39;]!,
+  );
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) =&gt; CurrentCubeType()),
+        ChangeNotifierProvider(create: (_) =&gt; CurrentTime()),
         ChangeNotifierProvider(create: (_) =&gt; CurrentLanguage()),
+        ChangeNotifierProvider(create: (_) =&gt; CurrentNotifications()),
+        ChangeNotifierProvider(create: (_) =&gt; CurrentConfigurationTimer()),
         ChangeNotifierProvider(create: (_) =&gt; CurrentStatistics()),
         ChangeNotifierProvider(create: (_) =&gt; CurrentScramble()),
         ChangeNotifierProvider(create: (_) =&gt; CurrentSession()),
         ChangeNotifierProvider(create: (context) =&gt; CurrentUser()),
+        &#47;&#47; INICIAR EL CONTADOR CUANDO INICIE LA APP
+        ChangeNotifierProvider(create: (context) =&gt; CurrentUsageTimer()..start()),
       ],
-      child: CubeXApp(), &#47;&#47; SE INICIA LA APLICACIÓN
+      child: const CubeXApp(), &#47;&#47; SE INICIA LA APLICACIÓN
     ),
   ); &#47;&#47; SE INICIA LA APLICACION DENTRO DE UN PROVIDER PARA GESTIONAR EL USUARIO
 }</code></pre>

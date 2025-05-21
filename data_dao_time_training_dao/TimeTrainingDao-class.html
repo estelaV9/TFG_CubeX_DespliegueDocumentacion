@@ -115,6 +115,32 @@ calcular estadísticas relacionadas con los tiempos en las sesiones.</p>
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="countPenalty" class="callable">
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/countPenalty.html">countPenalty</a></span><span class="signature">(<wbr><span class="parameter" id="countPenalty-param-idSession"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">idSession</span>, </span><span class="parameter" id="countPenalty-param-penalty"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">penalty</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para contar cuántos tiempos tienen una penalización específica en una sesión.
+  
+
+</dd>
+
+        <dt id="deleteAllTimeBySession" class="callable">
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/deleteAllTimeBySession.html">deleteAllTimeBySession</a></span><span class="signature">(<wbr><span class="parameter" id="deleteAllTimeBySession-param-idSession"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">idSession</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para eliminar todos los tiempos de una sesión.
+  
+
+</dd>
+
         <dt id="deleteTime" class="callable">
   <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/deleteTime.html">deleteTime</a></span><span class="signature">(<wbr><span class="parameter" id="deleteTime-param-idTimeTraining"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idTimeTraining</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
@@ -124,6 +150,32 @@ calcular estadísticas relacionadas con los tiempos en las sesiones.</p>
 </dt>
 <dd>
   Método para eliminar un tiempo por su ID.
+  
+
+</dd>
+
+        <dt id="getAoX" class="callable">
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getAoX.html">getAoX</a></span><span class="signature">(<wbr><span class="parameter" id="getAoX-param-timesList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span> <span class="parameter-name">timesList</span>, </span><span class="parameter" id="getAoX-param-numAvg"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">numAvg</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Metodo para calcular la <strong>media de X tiempos (AoX)</strong> de una sesión.
+  
+
+</dd>
+
+        <dt id="getBestAvg" class="callable">
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getBestAvg.html">getBestAvg</a></span><span class="signature">(<wbr><span class="parameter" id="getBestAvg-param-timesList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span> <span class="parameter-name">timesList</span>, </span><span class="parameter" id="getBestAvg-param-numAvg"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">numAvg</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para calcular la <strong>mejor media</strong> de X tiempos en una sesión.
   
 
 </dd>
@@ -142,7 +194,7 @@ calcular estadísticas relacionadas con los tiempos en las sesiones.</p>
 </dd>
 
         <dt id="getIdByTime" class="callable">
-  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getIdByTime.html">getIdByTime</a></span><span class="signature">(<wbr><span class="parameter" id="getIdByTime-param-scramble"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">scramble</span>, </span><span class="parameter" id="getIdByTime-param-idSession"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idSession</span></span>)
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getIdByTime.html">getIdByTime</a></span><span class="signature">(<wbr><span class="parameter" id="getIdByTime-param-scramble"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">scramble</span>, </span><span class="parameter" id="getIdByTime-param-idSession"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">idSession</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
   </span>
   
@@ -155,7 +207,7 @@ calcular estadísticas relacionadas con los tiempos en las sesiones.</p>
 </dd>
 
         <dt id="getPbTimeBySession" class="callable">
-  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getPbTimeBySession.html">getPbTimeBySession</a></span><span class="signature">(<wbr><span class="parameter" id="getPbTimeBySession-param-timesList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span> <span class="parameter-name">timesList</span></span>)
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getPbTimeBySession.html">getPbTimeBySession</a></span><span class="signature">(<wbr><span class="parameter" id="getPbTimeBySession-param-timesList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span> <span class="parameter-name">timesList</span>, </span><span class="parameter" id="getPbTimeBySession-param-isDnf"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isDnf</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
   </span>
   
@@ -167,21 +219,47 @@ calcular estadísticas relacionadas con los tiempos en las sesiones.</p>
 
 </dd>
 
+        <dt id="getTimeById" class="callable">
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getTimeById.html">getTimeById</a></span><span class="signature">(<wbr><span class="parameter" id="getTimeById-param-idTime"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idTime</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_time_training/TimeTraining-class.html">TimeTraining</a>?</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para obtener un tiempo por su ID en la base de datos.
+  
+
+</dd>
+
         <dt id="getTimesOfSession" class="callable">
-  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getTimesOfSession.html">getTimesOfSession</a></span><span class="signature">(<wbr><span class="parameter" id="getTimesOfSession-param-idSession"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">idSession</span></span>)
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getTimesOfSession.html">getTimesOfSession</a></span><span class="signature">(<wbr><span class="parameter" id="getTimesOfSession-param-idSession"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">idSession</span>, [</span><span class="parameter" id="getTimesOfSession-param-comment"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">comment</span>, </span><span class="parameter" id="getTimesOfSession-param-time"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">time</span>, </span><span class="parameter" id="getTimesOfSession-param-dateAsc"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">dateAsc</span>, </span><span class="parameter" id="getTimesOfSession-param-timeAsc"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">timeAsc</span></span>])
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Método para obtener los tiempos de una sesión específica.
+  Método para obtener los tiempos de una sesión específica con opción de búsqueda por comentario o tiempo.
+  
+
+</dd>
+
+        <dt id="getWorstAvg" class="callable">
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getWorstAvg.html">getWorstAvg</a></span><span class="signature">(<wbr><span class="parameter" id="getWorstAvg-param-timesList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span> <span class="parameter-name">timesList</span>, </span><span class="parameter" id="getWorstAvg-param-numAvg"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">numAvg</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para calcular la <strong>peor media</strong> de X tiempos en una sesión.
   
 
 </dd>
 
         <dt id="getWorstTimeBySession" class="callable">
-  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getWorstTimeBySession.html">getWorstTimeBySession</a></span><span class="signature">(<wbr><span class="parameter" id="getWorstTimeBySession-param-timesList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span> <span class="parameter-name">timesList</span></span>)
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/getWorstTimeBySession.html">getWorstTimeBySession</a></span><span class="signature">(<wbr><span class="parameter" id="getWorstTimeBySession-param-timesList"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../model_time_training/TimeTraining-class.html">TimeTraining</a></span>&gt;</span></span> <span class="parameter-name">timesList</span>, </span><span class="parameter" id="getWorstTimeBySession-param-isDnf"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">isDnf</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span>
   </span>
   
@@ -229,6 +307,19 @@ calcular estadísticas relacionadas con los tiempos en las sesiones.</p>
 <dd class="inherited">
   A string representation of this object.
   <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="updateTime" class="callable">
+  <span class="name"><a href="../data_dao_time_training_dao/TimeTrainingDao/updateTime.html">updateTime</a></span><span class="signature">(<wbr><span class="parameter" id="updateTime-param-idTime"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idTime</span>, </span><span class="parameter" id="updateTime-param-time"><span class="type-annotation"><a href="../model_time_training/TimeTraining-class.html">TimeTraining</a>?</span> <span class="parameter-name">time</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Método para actualizar un tiempo en la base de datos.
+  
 
 </dd>
 

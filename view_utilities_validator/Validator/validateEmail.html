@@ -71,7 +71,7 @@
 <li><code>value</code>: El correo electrónico ingresado por el usuario.</li>
 </ul>
 <p>Verifica que el campo no esté vacío y que el formato sea válido.</p>
-<p>Retorna un mensaje de error si la validación falla o <code>null</code> si es exitosa.</p>
+<p>Retorna la key del mensaje de error si la validación falla o <code>null</code> si es exitosa.</p>
 </section>
 
 
@@ -80,12 +80,12 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static String? validateEmail(String? value) {
   if (value == null || value.isEmpty) {
-    return &#39;Please fill in this field.&#39;;
+    return &#39;form_error_required_field&#39;;
   } &#47;&#47; VALIDAR CAMPOS VACIOS
 
   if (!RegExp(r&#39;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$&#39;)
       .hasMatch(value)) {
-    return &#39;Please enter a valid email&#39;;
+    return &#39;form_error_invalid_email&#39;;
   } &#47;&#47; VALIDAR EL CAMPO DEL EMAIL
 
   return null;

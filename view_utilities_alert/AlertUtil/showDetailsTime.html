@@ -69,6 +69,8 @@
     
 <section class="desc markdown">
   <p>Método para mostrar los detalles de un tiempo seleccionado.</p>
+<p>Este método permite visualizar y gestionar un tiempo registrado, mostrando su información
+y permitiendo aplicar penalizaciones, eliminar el tiempo o copiar el scramble asociado.</p>
 <p>Parametros:
 <code>context</code>: El contexto de la aplicación para poder mostrar el diálogo.
 <code>deleteTime</code>: Función que se ejecutará si el usuario confirma la eliminación del tiempo.
@@ -80,141 +82,254 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static showDetailsTime(BuildContext context,
-    Future&lt;void&gt; Function() deleteTime, TimeTraining timeTraining) {
-  var colorPressed = AppColors.purpleButton;
-  var isTextPressed = false;
+    Future&lt;void&gt; Function() deleteTime, TimeTraining timeTraining) async {
+  &#47;&#47; ATRIBUTO PARA SABER SI ESTA PRESIONADO EL SCRAMBLE O LOS COMMENTS
+  var isTextPressed = true;
+
+  final currentTime = Provider.of&lt;CurrentTime&gt;(context, listen: false);
+  currentTime.setResetTimeTraining();
+  currentTime.setTimeTraining(timeTraining); &#47;&#47; SE ACTUALIZA EL ESTADO GLOBAL
+
+  &#47;&#47; REESTABLECER VALORES DE PENALIZACION
+  currentTime.isPlusTwoChoose = false;
+  currentTime.isDnfChoose = false;
+
+  int idTime = await timeTrainingDaoSb.getIdByTime(
+      currentTime.timeTraining!.scramble,
+      currentTime.timeTraining!.idSession);
+
+  if (idTime == -1) {
+    AlertUtil.showSnackBarError(context, &quot;time_saved_error&quot;);
+    return;
+  } &#47;&#47; VALIDAR QUE EL IDTIME NO DE ERROR
+
+  &#47;&#47; SE GUARA EL TIEMPO ORIGINAL DEPENDIENDO DE SI TENIA UN +2 O NO DE PENALIZACION
+  final timeInSecondsOld = currentTime.timeTraining!.penalty == &quot;+2&quot;
+      ? timeTraining.timeInSeconds - 2
+      : timeTraining.timeInSeconds;
+
   &#47;&#47; SE MUESTRA EL DIALOG
   return showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          &#47;&#47; SE REDUCE EL PADDING DEL TITULO Y DEL CONTENIDO
-          titlePadding:
-              const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        return StatefulBuilder(
+          builder: (context, setState) {
+            setState(() {
+              &#47;&#47; SEGUN LA PENALIZACION DEL TIEMPO, SE PONE UN ICONO
+              if (currentTime.timeTraining!.penalty == &quot;+2&quot;) {
+                iconPenalty = Icons.timer;
+                currentTime.isDnfChoose = false;
+                currentTime.isPlusTwoChoose = true;
+              } else if (currentTime.timeTraining!.penalty == &quot;DNF&quot;) {
+                iconPenalty = Icons.close;
+                currentTime.isDnfChoose = true;
+                currentTime.isPlusTwoChoose = false;
+              } else if (currentTime.timeTraining!.penalty == &quot;none&quot;) {
+                iconPenalty = Icons.block;
+              } &#47;&#47; INICIALIZAR EL ICONO
+            });
+            return AlertDialog(
+              &#47;&#47; SE REDUCE EL PADDING DEL TITULO Y DEL CONTENIDO
+              titlePadding:
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
 
-          backgroundColor: AppColors.lightVioletColor,
-          &#47;&#47; TITULO DE LA ALERTA
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconClass.iconButton(
-                  context, () {}, &quot;add_penalty&quot;, Icons.block),
-              Text(
-                timeTraining.timeInSeconds.toString(),
-                style: const TextStyle(
-                  color: AppColors.darkPurpleColor,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              IconClass.iconButton(context, () async {
-                await deleteTime();
-              }, &quot;delete_time&quot;, Icons.delete)
-            ],
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min, &#47;&#47; QUE OCUPE EL MINIMO
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              backgroundColor: AppColors.lightVioletColor,
+              &#47;&#47; TITULO DE LA ALERTA
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconClass.iconButton(
-                      context, () {}, &quot;date&quot;, Icons.calendar_month),
+                  DropdownButtonHideUnderline(
+                    child: DropdownButton2(
+                      &#47;&#47; BOTON PARA EL DROPDOWN
+                      customButton: IconClass.iconMaker(
+                          context, iconPenalty, &quot;add_penalty&quot;),
+                      &#47;&#47; ITEMS DEL DROPDOWN
+                      items: [
+                        ...MenuItems.items.map(
+                          (item) =&gt; DropdownMenuItem&lt;MenuItem&gt;(
+                            value: item,
+                            &#47;&#47; CONSTRUYE CADA ITEM DEL MENU
+                            child: MenuItems.buildItem(item),
+                          ),
+                        ),
+                      ],
+
+                      &#47;&#47; CUANDO SE SELECCIONA UNA OPCION, SE ACTUALIZA EL ICONO Y LA PENALIZACION
+                      onChanged: (value) async {
+                        setState(() {
+                          iconPenalty = value!.icon;
+
+                          &#47;&#47; ASIGNAR LA PENALIZACION SEGUN EL ICONO SELECCIONADO
+                          if (iconPenalty == Icons.close) {
+                            &#47;&#47; PENALIZACION DNF (NO FINALIZADO)
+                            currentTime.setPenalty(&quot;DNF&quot;, !currentTime.isDnfChoose);
+                            currentTime.isDnfChoose = !currentTime.isDnfChoose;
+                            currentTime.isPlusTwoChoose = false;
+                          } else if (iconPenalty == Icons.timer) {
+                            &#47;&#47; PENALIZACION +2 SEGUNDOS
+                            currentTime.setPenalty(&quot;+2&quot;, !currentTime.isPlusTwoChoose);
+                            currentTime.isDnfChoose = false;
+                            currentTime.isPlusTwoChoose = !currentTime.isPlusTwoChoose;
+                          } else if (iconPenalty == Icons.block) {
+                            &#47;&#47; SIN PENALIZACION, RESTA LOS 2 SEGUNDOS SI ESTABA EN +2
+                            if (currentTime.timeTraining!.penalty == &quot;+2&quot;) {
+                              currentTime.timeTraining!.timeInSeconds = timeInSecondsOld;
+                            }
+                            currentTime.setPenalty(&quot;none&quot;, true);
+                          }
+                        });
+
+                        &#47;&#47; ACTUALIZAR EL ESTADO GLOBAL
+                        currentTime.updateCurrentTime(context);
+
+                        &#47;&#47; GUARDAR CAMBIOS EN LA BASE DE DATOS
+                        if (await timeTrainingDaoSb.updateTime(
+                            idTime, currentTime.timeTraining) == false) {
+                          &#47;&#47; MOSTRAR ERROR SI FALLA LA ACTUALIZACION
+                          AlertUtil.showSnackBarError(
+                              context, &quot;time_saved_error&quot;);
+                          return;
+                        }
+                      },
+
+                      dropdownStyleData: DropdownStyleData(
+                        width: 160, &#47;&#47; ANCHO DEL MENU DESPLEGABLE
+                        padding: const EdgeInsets.symmetric(vertical: 6),
+                        decoration: BoxDecoration(
+                          &#47;&#47; BORDES REDONDEADOS
+                          borderRadius: BorderRadius.circular(4),
+                          color: AppColors.imagenBg, &#47;&#47; COLOR DE FONDO
+                        ),
+                        offset: const Offset(0, 8), &#47;&#47; DESPLAZAMIENTO DEL MENU
+                      ),
+                      menuItemStyleData: MenuItemStyleData(
+                        customHeights: [
+                          &#47;&#47; ALTURA DE CADA ITEM
+                          ...List&lt;double&gt;.filled(MenuItems.items.length, 48),
+                        ],
+                        &#47;&#47; ESPACIADO INTERNO
+                        padding: const EdgeInsets.only(left: 16, right: 16),
+                      ),
+                    ),
+                  ),
                   Text(
-                    DateFormat(&#39;dd&#47;MM&#47;yyyy&#39;).format(DateTime.now()),
-                    style: const TextStyle(
-                        color: AppColors.darkPurpleColor, fontSize: 16),
-                  )
+                    &#47;&#47; SI LA PENALIZACION ES &#39;DNF&#39; SE MUESTRA EN VEZ DEL TIEMPO
+                    currentTime.timeTraining!.penalty == &quot;DNF&quot;
+                        ? currentTime.timeTraining!.penalty.toString()
+                        : currentTime.timeTraining!.timeInSeconds.toString(),
+                    style: AppStyles.darkPurpleAndBold(30),
+                  ),
+
+                  IconClass.iconButton(context, () async {
+                    await deleteTime();
+                  }, &quot;delete_time&quot;, Icons.delete)
                 ],
               ),
-
-              &#47;&#47; LINEA DIVISORIA ENTRE EL LA FECHA Y EL CONTENIDO EN SI
-              const Divider(
-                height: 10,
-                thickness: 1.3,
-                indent: 10,
-                endIndent: 10,
-                color: AppColors.darkPurpleColor,
-              ),
-
-              const SizedBox(height: 5),
-
-              Row(
+              content: Column(
+                mainAxisSize: MainAxisSize.min, &#47;&#47; QUE OCUPE EL MINIMO
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      isTextPressed = !isTextPressed;
-                    },
-                    child: Container(
-                      width: 95,
-                      height: 30,
-                      color: isTextPressed
-                          ? AppColors.purpleButton
-                          : Colors.transparent,
-                      child: Card(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconClass.iconButton(
+                          context, () {}, &quot;date&quot;, Icons.calendar_month),
+                      Text(
+                        DateFormat(&#39;dd&#47;MM&#47;yyyy&#39;).format(DateTime.now()),
+                        style: AppStyles.darkPurple(16),
+                      )
+                    ],
+                  ),
+
+                  &#47;&#47; LINEA DIVISORIA ENTRE LA FECHA Y EL CONTENIDO EN SI
+                  const Divider(
+                    height: 10,
+                    thickness: 1.3,
+                    indent: 10,
+                    endIndent: 10,
+                    color: AppColors.darkPurpleColor,
+                  ),
+
+                  const SizedBox(height: 5),
+
+                  Row(
+                    children: [
+                      Card(
+                        &#47;&#47; SEGUN SI ESTA PRESIONADO O NO, SE TORNA DE UN COLOR U OTRO
                         color: isTextPressed
-                            ? AppColors.purpleButton
-                            : Colors.transparent,
+                            ? AppColors.downLinearColor
+                            : AppColors.purpleButton,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         ), &#47;&#47; RADIO DEL CARD
                         child: TextButton(
-                          onPressed: () {},
-                          child: const Text(
+                          onPressed: () {
+                            setState(() {
+                              &#47;&#47; SI EL SCRAMBLE ES SELECCIONADO, SE PONE A TRUE
+                              isTextPressed = true;
+                            });
+                          },
+                          child: Text(
                             &quot;Scramble&quot;,
-                            style: TextStyle(
-                                color: AppColors.darkPurpleColor,
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold),
+                            style: AppStyles.darkPurpleAndBold(13),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 100,
-                    height: 30,
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ), &#47;&#47; RADIO DEL CARD
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          &quot;Comments&quot;,
-                          style: TextStyle(
-                              color: AppColors.darkPurpleColor,
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold),
+                      Card(
+                        &#47;&#47; SI EL SCRAMBLE ESTA PRESIONADO SE CAMBIA DE COLOR EL CARD
+                        color: isTextPressed
+                            ? AppColors.purpleButton
+                            : AppColors.downLinearColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ), &#47;&#47; RADIO DEL CARD
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              &#47;&#47; CUANDO PRESIONE LOS COMENTAIOS, SE PONE A FALSE
+                              isTextPressed = false;
+                            });
+                          },
+                          child: Text(
+                            Internationalization.internationalization.getLocalizations(context, &quot;comments&quot;),
+                            style: AppStyles.darkPurpleAndBold(13),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          &#47;&#47; SI EL SCRAMBLE ESTA PRESIONADO SE MUESTRA EL SCRAMBLE
+                          &#47;&#47; Y SI NO LOS COMENTARIOS
+                          isTextPressed
+                              ? timeTraining.scramble
+                              : (timeTraining.comments ?? Internationalization.internationalization.getLocalizations(context, &quot;no_comments&quot;)),
+                          style: const TextStyle(fontSize: 14),
+                          &#47;&#47; HACE UN SALTO DE LINEA SI ES LARGO
+                          softWrap: true,
+                          &#47;&#47; SI TIENE MUCHO OVERFLOW, TRUNCA EL SCRAMBLE Y PONE PUNTOS SUSPENSIVOS
+                          overflow: TextOverflow.fade,
+                        ),
+                      ),
+                      IconClass.iconButton(context, () async {
+                        await Clipboard.setData(
+                            ClipboardData(text: timeTraining.scramble));
+                        &#47;&#47; MUESTRA MENSAJE DE QUE SE COPIO CORRECTAMENTE
+                        showSnackBarInformation(
+                            context, &quot;copied_successfully&quot;);
+                      }, &quot;copy_scramble&quot;, Icons.copy)
+                    ],
+                  )
                 ],
               ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 190,
-                    child: Text(
-                      timeTraining.scramble,
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                  ),
-                  IconClass.iconButton(context, () async {
-                    await Clipboard.setData(
-                        ClipboardData(text: timeTraining.scramble));
-                    &#47;&#47; MUESTRA MENSAJE DE QUE SE COPIO CORRECTAMENTE
-                    showSnackBarInformation(context, &quot;copied_successfully&quot;);
-                  }, &quot;copy_scramble&quot;, Icons.copy)
-                ],
-              )
-            ],
-          ),
+            );
+          },
         );
       });
 }</code></pre>

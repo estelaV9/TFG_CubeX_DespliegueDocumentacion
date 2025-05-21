@@ -57,7 +57,7 @@
 
     <section class="multi-line-signature">
       
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../model_session/Session-class.html">Session</a></span>&gt;</span></span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../../model_session/SessionClass-class.html">SessionClass</a></span>&gt;</span></span>&gt;</span></span>
 <span class="name ">searchSessionByCubeAndUser</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="searchSessionByCubeAndUser-param-idUser"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idUser</span>, </span></li>
 <li><span class="parameter" id="searchSessionByCubeAndUser-param-idCubeType"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">idCubeType</span></span></li>
 </ol>)
@@ -85,7 +85,7 @@ correspondientes a esos parámetros.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;Session&gt;&gt; searchSessionByCubeAndUser(
+  <pre class="language-dart"><code class="language-dart">Future&lt;List&lt;SessionClass&gt;&gt; searchSessionByCubeAndUser(
     int idUser, int idCubeType) async {
   final db = await DatabaseHelper.database;
   try {
@@ -97,7 +97,7 @@ correspondientes a esos parámetros.</p>
     if (result.isNotEmpty) {
       &#47;&#47; DEVUELVE LA LISTA DE SESIONES CON ESE TIPO DE CUBO Y ESE USUARIO
       return result.map((session) {
-        return Session(
+        return SessionClass(
           idSession: session[&#39;idSession&#39;] as int,
           idUser: session[&#39;idUser&#39;] as int,
           sessionName: session[&#39;sessionName&#39;] as String,
